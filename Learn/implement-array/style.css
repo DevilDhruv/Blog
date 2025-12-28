@@ -84,6 +84,115 @@ ul {
 }
 
 /* =====================
+   DOT TOC (Minimal)
+===================== */
+
+.dot-toc {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  z-index: 10;
+  opacity: 0.9;
+}
+
+.dot-toc:hover {
+  opacity: 1;
+}
+
+.dot-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dot-toc li {
+  position: relative;
+  margin: 14px 0;
+}
+
+/* The dot */
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--toc-dot);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Active (current section) */
+.dot.active {
+  background-color: var(--accent);
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+/* Hover */
+.dot:hover {
+  opacity: 1;
+}
+
+/* Tooltip label */
+.dot::after {
+  content: attr(data-title);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--section-bg);
+  color: var(--text-main);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Show tooltip on hover */
+.dot:hover::after {
+  opacity: 1;
+  transform: translate(-4px, -50%);
+}
+
+/* Hide on small screens */
+@media (max-width: 600px) {
+  .dot-toc {
+    display: none;
+  }
+}
+
+
+/* =====================
+   Blog Series Navigation
+===================== */
+
+.blog-series {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+  padding: 30px;
+  background: var(--section-bg);
+  border-radius: 12px;
+}
+
+.blog-series a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.blog-series a:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================
    THEMES
 ===================== */
 /* Light Theme – “Cool Editorial” */
@@ -96,6 +205,7 @@ ul {
   --accent: #345d9d;          /* professional ink‑blue accent */
   --button-bg: #c3d4f2;       /* muted blue button background */
   --button-text: #112031;     /* dark blue text on buttons */
+  --toc-dot: #6b7280;           /* gray for TOC dots */
 }
 
 /* Bookish Theme – warm, paper-like (unchanged) */
@@ -108,6 +218,7 @@ body[data-theme="bookish"] {
   --accent: #b2663b;
   --button-bg: #c5cfdf;
   --button-text: #16313d;
+  --toc-dot: #7a6f4e;
 }
 
 /* Dark Theme – “Ink on Charcoal” (unchanged) */
@@ -120,6 +231,7 @@ body[data-theme="dark"] {
   --accent: #a5b5d3;
   --button-bg: #1f2937;
   --button-text: #e5e7eb;
+  --toc-dot: #64748b;
 }
 
 

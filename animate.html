@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Dhruv Rastogi — Engineering Notes, DSA & Systems</title>
+    <meta name="description" content="Personal technical blog by Dhruv Rastogi covering data structures, JavaScript, systems, internships, and engineering learnings." />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta name="keywords" content="Dhruv Rastogi, DSA, Data Structures, JavaScript, Systems, Software Engineering Blog, Engineering Notes" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dhruv Rastogi — Engineering Blog" />
+    <meta property="og:description" content="Engineering notes on data structures, JavaScript, systems, internships, and learning software engineering deeply." />
+    <meta property="og:url" content="https://devildhruv.github.io/Blog" />
+    <meta property="og:image" content="https://devildhruv.github.io/Blog/og-image.jpg" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dhruv Rastogi — Engineering Blog" />
+    <meta name="twitter:description" content="Engineering notes on DSA, JavaScript, systems, and practical software development." />
+    <meta name="twitter:image" content="https://devildhruv.github.io/Blog/og-image.jpg" />
+
+    <link rel="stylesheet" href="./TestPages/Test01/style.css" />
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&lt;/&gt;</text></svg>" />
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="#" class="logo-link">&lt;/&gt;</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#blogs" class="nav-link">Read</a></li>
+                <li><a href="#subscribe" class="nav-link">Subscribe</a></li>
+                <li><a href="#footer" class="nav-link">About</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <button class="theme-btn" data-theme="light" aria-label="Light theme">☀️</button>
+                <button class="theme-btn" data-theme="dark" aria-label="Dark theme">🌙</button>
+                <button class="theme-btn" data-theme="bookish" aria-label="Bookish theme">📖</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Dhruv Rastogi</h1>
+            <p class="hero-subtitle">
+                I write about data structures, JavaScript, systems, internships, and learning software engineering from first principles.
+            </p>
+            <p class="hero-philosophy">
+                "Good engineers chase understanding, not just tools."
+            </p>
+            <a href="#blogs" class="cta-button">Read Blogs</a>
+        </div>
+    </section>
+
+    <!-- Blog Categories Section -->
+    <section class="categories" id="categories">
+        <div class="categories-container">
+            <h2 class="section-title">Explore Topics</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3 class="category-title">Data Structures</h3>
+                    <p class="category-description">
+                        Arrays, trees, graphs, dynamic programming, and problem-solving fundamentals.
+                    </p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-title">JavaScript</h3>
+                    <p class="category-description">
+                        Core JavaScript, async patterns, internals, and real-world usage.
+                    </p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-title">Systems & Internships</h3>
+                    <p class="category-description">
+                        System design basics, backend concepts, and internship experiences.
+                    </p>
+                </div>
+                <div class="category-card">
+                    <h3 class="category-title">Notes & Essays</h3>
+                    <p class="category-description">
+                        Learnings, reflections, and explanations beyond code.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts Section -->
+    <section class="latest-posts" id="blogs">
+        <div class="posts-container">
+            <h2 class="section-title">Latest Posts</h2>
+            <div class="posts-grid">
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <h3 class="post-title">Designing an Array from Scratch in JavaScript</h3>
+                        <span class="post-tag dsa">DSA</span>
+                    </div>
+                    <p class="post-description">
+                        Understanding how arrays work internally by building one step by step.
+                    </p>
+                    <a href="./Learn/implement-array/index.html" class="post-link">Read more →</a>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <h3 class="post-title">Async & Event Loop — How JavaScript Really Works</h3>
+                        <span class="post-tag js">JavaScript</span>
+                    </div>
+                    <p class="post-description">
+                        A mental model for promises, async/await, and the JavaScript event loop.
+                    </p>
+                    <a href="#" class="post-link">Coming soon →</a>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <h3 class="post-title">Internship Notes: What College Doesn’t Teach</h3>
+                        <span class="post-tag career">Career</span>
+                    </div>
+                    <p class="post-description">
+                        Lessons from real-world development, teamwork, and engineering discipline.
+                    </p>
+                    <a href="#" class="post-link">Coming soon →</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe" id="subscribe">
+        <div class="subscribe-container">
+            <h2 class="section-title">Stay Updated</h2>
+            <p class="subscribe-subtitle">
+                Occasional emails when I publish something worth sharing.
+            </p>
+
+            <form class="subscribe-form" id="subscribeForm">
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        class="email-input" 
+                        placeholder="your@email.com" 
+                        required 
+                        aria-label="Email address"
+                    />
+                </div>
+
+                <fieldset class="topics-fieldset">
+                    <legend class="topics-legend">Topics you care about</legend>
+                    <div class="topics-grid">
+                        <label class="topic-checkbox">
+                            <input type="checkbox" name="topics" value="DSA" />
+                            <span>DSA</span>
+                        </label>
+                        <label class="topic-checkbox">
+                            <input type="checkbox" name="topics" value="JavaScript" />
+                            <span>JavaScript</span>
+                        </label>
+                        <label class="topic-checkbox">
+                            <input type="checkbox" name="topics" value="Career" />
+                            <span>Career</span>
+                        </label>
+                        <label class="topic-checkbox">
+                            <input type="checkbox" name="topics" value="Notes" />
+                            <span>Notes</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="submit-button">Subscribe</button>
+                <p class="form-message" id="formMessage"></p>
+            </form>
+
+            <p class="form-note">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <h3 class="footer-title">Dhruv Rastogi</h3>
+                <p class="footer-tagline">Engineering with curiosity</p>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/DevilDhruv" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <!-- GitHub SVG unchanged -->
+                </a>
+                <a href="https://www.linkedin.com/in/dhruv-rastogi-/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <!-- LinkedIn SVG unchanged -->
+                </a>
+                <a href="https://leetcode.com/DevilDhruv" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                    <!-- LeetCode SVG unchanged -->
+                </a>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2024 Dhruv Rastogi. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./TestPages/Test01/script.js"></script>
+</body>
+</html>
