@@ -857,3 +857,35 @@ a:hover {
         height: 20px;
     }
 }
+
+/* ==========================================
+   FORMAT TOGGLE — ANIMATED
+   ========================================== */
+
+.format-toggle-animated {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-radius: 999px;
+  background-color: var(--color-tag-bg);
+  transition: all var(--transition-speed) ease;
+}
+
+.toggle-icon {
+  display: inline-block;
+  transition: transform var(--transition-speed) ease;
+}
+
+.format-toggle-animated:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.format-toggle-animated:hover .toggle-icon {
+  transform: rotate(90deg);
+}

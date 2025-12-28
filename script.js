@@ -223,3 +223,8 @@ function setActiveTheme(theme) {
     btn.classList.toggle('active', btn.dataset.theme === theme);
   });
 }
+
+if(!window.localStorage.getItem('istheuseralreadyvisited')) {
+  window.alert("Kindly Check the Explore Button on the top left for animated view of the site.");
+  window.localStorage.setItem('istheuseralreadyvisited', true);
+}

@@ -591,3 +591,19 @@ body {
     font-size: var(--text-base);
   }
 }
+
+/* ==========================================
+   FORMAT TOGGLE — MINIMAL
+   ========================================== */
+
+.format-toggle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  margin-left: var(--space-md);
+  transition: color var(--transition-speed) ease;
+}
+
+.format-toggle:hover {
+  color: var(--color-accent);
+}
