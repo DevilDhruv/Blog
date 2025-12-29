@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Reverse a String in JavaScript | DevilDhruv</title>
+
+    <meta
+      name="description"
+      content="Learn how to reverse a string in JavaScript using multiple approaches. Understand edge cases, time complexity, and clean problem-solving techniques."
+    />
+
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="reverse string javascript, javascript string problems, DSA strings, beginner javascript problems"
+    />
+
+    <!-- Open Graph (for sharing) -->
+    <meta
+      property="og:title"
+      content="Reverse a String in JavaScript"
+    />
+    <meta
+      property="og:description"
+      content="A beginner-friendly breakdown of reversing a string in JavaScript, including manual and built-in approaches."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/reverse-string/index.html"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Strings · JavaScript · Beginner Friendly
+        </p>
+
+        <h1 class="intro-div-header">
+          Reverse a String in JavaScript
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          Reversing a string is one of the most common beginner problems in programming.
+          While it looks simple, it helps you understand loops, edge cases, and how
+          JavaScript handles strings internally.
+        </p>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          Given a string, your task is to reverse it and return the reversed version.
+        </p>
+
+        <p>
+          <strong>Example:</strong>
+        </p>
+
+        <ul>
+          <li><code>"Hello I am Dhruv"</code> → <code>"vurhD ma I olleH"</code></li>
+        </ul>
+
+        <p>
+          We’ll first build the solution manually, then compare it with JavaScript’s
+          built-in approaches.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Core Idea -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 Core Idea</h2>
+
+        <p>
+          Strings in JavaScript are <strong>immutable</strong>, which means we cannot
+          modify them directly. To reverse a string, we must:
+        </p>
+
+        <ul>
+          <li>Read characters from the end</li>
+          <li>Store them in a new structure</li>
+          <li>Combine them back into a string</li>
+        </ul>
+
+        <p>
+          This gives us full control over the logic and helps us understand what’s
+          happening behind the scenes.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Code Walkthrough -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Code Walkthrough</h2>
+
+        <h3>1️⃣ Input Validation</h3>
+        <p>
+          Before doing anything, we validate the input to ensure:
+        </p>
+
+        <ul>
+          <li>The input exists</li>
+          <li>The input is a string</li>
+          <li>The string has more than one character</li>
+        </ul>
+
+        <p>
+          This prevents unnecessary computation and handles edge cases gracefully.
+        </p>
+
+        <h3>2️⃣ Iterating Backwards</h3>
+        <p>
+          We start from the last character and move backward using a loop.
+        </p>
+
+        <ul>
+          <li>Access each character using its index</li>
+          <li>Push characters into a new array</li>
+        </ul>
+
+        <p>
+          This mimics how reversal works at a low level.
+        </p>
+
+        <h3>3️⃣ Constructing the Final String</h3>
+        <p>
+          Once all characters are collected, we join them together to form
+          the reversed string.
+        </p>
+
+        <p>
+          This separation of steps keeps the logic clean and readable.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Output -->
+      <div class="blog-section output-section">
+        <h2>📤 Output</h2>
+
+        <p>
+          For the input string:
+        </p>
+
+        <ul>
+          <li><code>"Hello I am Dhruv"</code></li>
+        </ul>
+
+        <p>
+          The output produced is:
+        </p>
+
+        <ul>
+          <li><code>"vurhD ma I olleH"</code></li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- Built-in Approaches -->
+      <div class="blog-section bonus-section">
+        <h2>⚡ Built-in JavaScript Approaches</h2>
+
+        <p>
+          JavaScript also provides concise ways to reverse a string:
+        </p>
+
+        <ul>
+          <li><code>str.split('').reverse().join('')</code></li>
+          <li><code>[...str].reverse().join('')</code></li>
+        </ul>
+
+        <p>
+          These are shorter, but hide the underlying logic. As a learner,
+          it’s important to understand the manual approach first.
+        </p>
+      </div>
+
+      <div>
+        <p style="margin-top: 60px; font-size: 18px">
+          🚀 <strong>Key Takeaway:</strong>  
+          Simple problems teach powerful fundamentals. Mastering these basics
+          builds confidence for harder challenges.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../implement-array/index.html">
+          ← Previous: Implement Array from Scratch
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../custom-stack/index.html">
+          Next: Implement Stack from Scratch →
+        </a>
+      </nav>
+    </article>
+
+    <script src="theme.js"></script>
+  </body>
+</html>
