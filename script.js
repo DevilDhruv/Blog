@@ -223,8 +223,30 @@ function setActiveTheme(theme) {
     btn.classList.toggle('active', btn.dataset.theme === theme);
   });
 }
+/* ============================
+   FORMAT TOGGLE — INDEX PAGE
+   ============================ */
 
-if(!window.localStorage.getItem('istheuseralreadyvisited')) {
-  window.alert("Kindly Check the Explore Button on the top left for animated view of the site.");
-  window.localStorage.setItem('istheuseralreadyvisited', true);
+const exploreBtn = document.querySelector('.format-toggle');
+
+// Handle explicit click
+if (exploreBtn) {
+  exploreBtn.addEventListener('click', () => {
+    localStorage.setItem('preferredFormat', 'animated');
+  });
+}
+
+// Show hint only once
+if (!localStorage.getItem('visitedOnce')) {
+  alert('Tip: Try the Explore view for an animated experience.');
+  localStorage.setItem('visitedOnce', 'true');
+}
+
+// OPTIONAL auto-redirect ONLY on first visit
+if (
+  localStorage.getItem('preferredFormat') === 'animated' &&
+  !sessionStorage.getItem('redirectedThisSession')
+) {
+  sessionStorage.setItem('redirectedThisSession', 'true');
+  window.location.href = './animate.html';
 }

@@ -289,3 +289,24 @@ function setActiveTheme(theme) {
         btn.classList.toggle('active', btn.dataset.theme === theme);
     });
 }
+/* ============================
+   FORMAT TOGGLE — ANIMATE PAGE
+   ============================ */
+
+const minimalBtn = document.querySelector('.format-toggle-animated');
+
+// Handle explicit click
+if (minimalBtn) {
+  minimalBtn.addEventListener('click', () => {
+    localStorage.setItem('preferredFormat', 'minimal');
+  });
+}
+
+// OPTIONAL auto-redirect ONLY on first visit
+if (
+  localStorage.getItem('preferredFormat') === 'minimal' &&
+  !sessionStorage.getItem('redirectedThisSession')
+) {
+  sessionStorage.setItem('redirectedThisSession', 'true');
+  window.location.href = '../../index.html';
+}
