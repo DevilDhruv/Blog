@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Blogs | DevilDhruv</title>
+
+    <meta
+      name="description"
+      content="All technical blogs by Dhruv Rastogi on JavaScript, Data Structures, Algorithms, and Systems. Search, filter by tags, and explore."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="JavaScript blogs, DSA blog, algorithms, two pointers, arrays, DevilDhruv"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="All Blogs | DevilDhruv" />
+    <meta
+      property="og:description"
+      content="Browse all blogs on JavaScript, Data Structures, and Algorithms. Filter by tags and search topics."
+    />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/blogs.html"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      
+      <div class="container">
+        <a href="../index.html" class="home-link">← Home</a>
+        <div class="theme-switcher">
+          <button data-theme-btn="light">Light</button>
+          <button data-theme-btn="bookish">Bookish</button>
+          <button data-theme-btn="dark">Dark</button>
+        </div>
+
+        <h1 class="logo">Technical Journal</h1>
+        <p class="subtitle">
+          Notes on software engineering, algorithms, and development.
+        </p>
+
+        <div class="controls">
+          <div class="search-container">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search by title, description, or tags..."
+              aria-label="Search blogs"
+            />
+          </div>
+          <div id="activeFilters" class="active-filters">
+            <!-- Dynamic filters appear here -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div id="blogGrid" class="blog-grid">
+        <!-- Blog cards will be injected here by script.js -->
+      </div>
+
+      <div id="noResults" class="no-results hidden">
+        <p>No blogs found matching your criteria.</p>
+        <button id="clearFiltersBtn" class="btn-clear">
+          Clear all filters
+        </button>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Personal Technical Blog. Built with vanilla HTML/CSS/JS.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

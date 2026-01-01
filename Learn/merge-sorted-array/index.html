@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Merge Two Sorted Arrays in JavaScript | DevilDhruv</title>
+
+    <meta
+      name="description"
+      content="Learn how to merge two sorted arrays efficiently in JavaScript using the two pointer technique with step-by-step explanation."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="merge sorted arrays, JavaScript arrays, two pointer technique, DSA blog"
+    />
+
+    <meta property="og:title" content="Merge Two Sorted Arrays in JavaScript" />
+    <meta
+      property="og:description"
+      content="A beginner-friendly explanation of merging two sorted arrays efficiently without re-sorting."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/merge-sorted/index.html"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Arrays · JavaScript · Beginner Friendly
+        </p>
+
+        <h1 class="intro-div-header">Merge Two Sorted Arrays in JavaScript</h1>
+
+        <p class="intro-div-paragraph-2">
+          This problem looks deceptively simple, yet it reveals how well you
+          think about efficiency, constraints, and iteration. In this blog,
+          we’ll walk through the exact thought process an interviewer expects —
+          from the naive approach to the optimal one.
+        </p>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          You are given two arrays that are already sorted in ascending order.
+          Your task is to merge them into a single sorted array.
+        </p>
+
+        <pre><code class="language-js">
+const a = [2, 4, 7, 9];
+const b = [1, 3, 6, 8];
+
+// Expected Output:
+// [1, 2, 3, 4, 6, 7, 8, 9]
+    </code></pre>
+
+        <p>
+          The constraint that both arrays are already sorted is the most
+          important clue in this problem — and ignoring it usually leads to
+          suboptimal solutions.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Core Idea -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 How an Interviewer Expects You to Think</h2>
+
+        <p>A common beginner instinct is:</p>
+
+        <ul>
+          <li>Combine both arrays</li>
+          <li>Sort the result</li>
+        </ul>
+
+        <p>
+          While this works, it immediately raises a red flag in interviews.
+          Sorting again costs <strong>O((n + m) log(n + m))</strong>, which is
+          unnecessary.
+        </p>
+
+        <p>
+          Since both arrays are already sorted, the interviewer expects you to
+          ask:
+        </p>
+
+        <blockquote>
+          “Can I merge them in one pass without re-sorting?”
+        </blockquote>
+
+        <p>This leads us to the <strong>two pointer technique</strong>.</p>
+      </div>
+
+      <hr />
+
+      <!-- Walkthrough -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Step-by-Step Thought Process</h2>
+
+        <p>We maintain one pointer for each array:</p>
+
+        <ul>
+          <li><code>aIndex</code> → current element in array <code>a</code></li>
+          <li><code>bIndex</code> → current element in array <code>b</code></li>
+        </ul>
+
+        <p>
+          At every step, we compare the two pointed values and move forward only
+          the pointer that contributed the smaller value.
+        </p>
+
+        <p>
+          This guarantees that the merged array remains sorted at all times.
+        </p>
+
+        <pre><code class="language-js">
+const mergeSorted = (a, b) => {
+  let aIndex = 0, bIndex = 0;
+  const res = [];
+
+  while (aIndex < a.length && bIndex < b.length) {
+    if (a[aIndex] < b[bIndex]) {
+      res.push(a[aIndex]);
+      aIndex++;
+    } else {
+      res.push(b[bIndex]);
+      bIndex++;
+    }
+  }
+    </code></pre>
+
+        <p>
+          Once one array is exhausted, we can safely append the remaining
+          elements from the other array because they are already sorted.
+        </p>
+
+        <pre><code class="language-js">
+  return res
+    .concat(a.slice(aIndex))
+    .concat(b.slice(bIndex));
+};
+    </code></pre>
+
+        <p>
+          Each element is visited exactly once, making this solution both clean
+          and optimal.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Complexity -->
+      <div class="blog-section">
+        <h2>⏱ Time & Space Complexity</h2>
+
+        <ul>
+          <li><strong>Time:</strong> O(n + m) — one pass over both arrays</li>
+          <li><strong>Space:</strong> O(n + m) — for the merged result</li>
+        </ul>
+
+        <p>This is the best possible complexity for this problem.</p>
+      </div>
+
+      <hr />
+
+      <!-- Bonus -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Bonus Practice (Interview Follow-Ups)</h2>
+
+        <ul>
+          <li>Can you merge the arrays <strong>in-place</strong>?</li>
+          <li>What changes if the arrays are sorted in descending order?</li>
+          <li>How would you merge <code>k</code> sorted arrays?</li>
+          <li>How does this logic connect to Merge Sort?</li>
+        </ul>
+
+        <p>
+          If you can confidently answer these, you’ve truly understood the
+          problem — not just memorized the solution.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../reverse-string/index.html">
+          ← Previous: Reverse a String
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../../coming-soon.html">
+          Next: Merge Sort Explained →
+        </a>
+      </nav>
+    </article>
+
+    <script src="theme.js"></script>
+  </body>
+</html>

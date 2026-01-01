@@ -1,29 +1,70 @@
-<article class="article-top">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
 
-  <div class="blog-section intro-section">
-    <p class="intro-div-paragraph-1">CATEGORY · TECH · LEVEL</p>
-    <h1>BLOG TITLE</h1>
-    <p class="intro-div-paragraph-2">Short compelling intro...</p>
-  </div>
+    <title>BLOG TITLE | DevilDhruv</title>
 
-  <div class="blog-section">
-    <h2>📌 Problem Statement</h2>
-    <p>Explain the problem...</p>
-  </div>
+    <!-- SEO -->
+    <meta name="description" content="SHORT SEO DESCRIPTION" />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta name="keywords" content="DSA, JavaScript, Algorithms, DevilDhruv" />
 
-  <div class="blog-section">
-    <h2>🧠 Core Idea</h2>
-    <p>Main concept...</p>
-  </div>
+    <!-- Open Graph -->
+    <meta property="og:title" content="BLOG TITLE" />
+    <meta property="og:description" content="SHORT OG DESCRIPTION" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="BLOG URL" />
 
-  <div class="blog-section">
-    <h2>🛠 Walkthrough</h2>
-    <p>Step-by-step explanation...</p>
-  </div>
+    <!-- Code Highlighting -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+    ></script>
+  </head>
 
-  <div class="blog-section">
-    <h2>🎯 Bonus</h2>
-    <p>Practice problems...</p>
-  </div>
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
 
-</article>
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">CATEGORY · TECH · LEVEL</p>
+        <h1 class="intro-div-header">BLOG TITLE</h1>
+        <p class="intro-div-paragraph-2">
+          One-paragraph hook explaining what the reader will learn.
+        </p>
+      </div>
+
+      <!-- Content blocks go here -->
+
+      <nav class="blog-series">
+        <a class="prev" href="#">← Previous</a>
+        <a href="../../index.html">Home</a>
+        <a class="next" href="#">Next →</a>
+      </nav>
+    </article>
+
+    <script src="theme.js"></script>
+  </body>
+</html>
