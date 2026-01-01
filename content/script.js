@@ -8,7 +8,7 @@ const blogs = [
     title: "Implement Array from Scratch in JavaScript",
     description:
       "Understand how arrays work internally by building your own array with push, pop, insert, and delete operations.",
-    date: "2025-01-10",
+    date: "2025-12-29",
     tags: ["javascript", "arrays", "dsa", "beginner"],
     url: "../Learn/implement-array/index.html",
   },
@@ -17,7 +17,7 @@ const blogs = [
     title: "Reverse a String in JavaScript",
     description:
       "An interview-focused walkthrough of reversing a string using loops, built-in methods, and edge-case handling.",
-    date: "2025-01-12",
+    date: "2025-12-30",
     tags: ["javascript", "strings", "beginner", "interview"],
     url: "../Learn/reverse-string/index.html",
   },
@@ -26,9 +26,18 @@ const blogs = [
     title: "Merge Two Sorted Arrays",
     description:
       "Learn the two-pointer technique to merge sorted arrays efficiently with interview-level reasoning.",
-    date: "2025-01-14",
+    date: "2025-12-31",
     tags: ["javascript", "arrays", "two-pointers", "dsa"],
     url: "../Learn/merge-sorted-array/index.html",
+  },
+  {
+    id: 4,
+    title: "Find Longest Word In The String",
+    description: 
+      "Learn how to find the longest word in a sentence using JavaScript. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-01",
+    tags: ["javascript", "strings", "beginner", "interview"],
+    url: "../Learn/longest-word/index.html",
   },
 ];
 

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Find the Longest Word in a Sentence | DevilDhruv</title>
+
+    <meta
+      name="description"
+      content="Learn how to find the longest word in a sentence using JavaScript. Step-by-step interview-style explanation with edge cases and clean implementation."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="longest word javascript, string problems, DSA javascript, interview questions"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Find the Longest Word in a Sentence" />
+    <meta
+      property="og:description"
+      content="An interview-style walkthrough to find the longest word in a sentence using JavaScript."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/longest-word/index.html"
+    />
+
+    <!-- Prism -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Strings · JavaScript · Beginner Friendly
+        </p>
+
+        <h1 class="intro-div-header">
+          Find the Longest Word in a Sentence
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          This problem looks deceptively simple, but it tests how well you
+          understand strings, edge cases, and clean iteration. In this blog,
+          we’ll solve it the way interviewers expect — step by step.
+        </p>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          Given a sentence, your task is to return the
+          <strong>longest word</strong> in the sentence.
+        </p>
+
+        <p>
+          Ignore punctuation and special characters. If multiple words have the
+          same maximum length, return the one that appears first.
+        </p>
+
+        <pre><code class="language-js">
+Input:
+"Hello I am Dhruv!!!"
+
+Output:
+"Hello"
+        </code></pre>
+      </div>
+
+      <hr />
+
+      <!-- Core Idea -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 Core Idea</h2>
+
+        <p>
+          Before jumping into code, let’s think like an interviewer.
+        </p>
+
+        <ul>
+          <li>Sentences can contain punctuation</li>
+          <li>Words need to be separated correctly</li>
+          <li>We must track the longest word efficiently</li>
+        </ul>
+
+        <p>
+          The clean approach is:
+        </p>
+
+        <ul>
+          <li>Sanitize the string</li>
+          <li>Split it into words</li>
+          <li>Track the maximum length word</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- Walkthrough -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Step-by-Step Walkthrough</h2>
+
+        <h3>1️⃣ Remove unwanted characters</h3>
+        <p>
+          We first remove punctuation using a regular expression so that only
+          letters, numbers, and spaces remain.
+        </p>
+
+        <pre><code class="language-js">
+const words = sen
+  .replace(/[^a-zA-Z0-9 ]/g, '')
+  .split(' ');
+        </code></pre>
+
+        <h3>2️⃣ Track the longest word</h3>
+        <p>
+          We iterate through each word and keep updating the result whenever we
+          find a longer word.
+        </p>
+
+        <pre><code class="language-js">
+let maxi = 0;
+let res = "";
+
+words.forEach(word => {
+  if (word.length > maxi) {
+    maxi = word.length;
+    res = word;
+  }
+});
+        </code></pre>
+
+        <h3>3️⃣ Final solution</h3>
+
+        <pre><code class="language-js">
+function LongestWord(sen) {
+  const words = sen.replace(/[^a-zA-Z0-9 ]/g, '').split(' ');
+
+  let maxi = 0;
+  let res = "";
+
+  words.forEach(item => {
+    if (item.length > maxi) {
+      res = item;
+      maxi = item.length;
+    }
+  });
+
+  return res;
+}
+
+// keep this function call here
+console.log(LongestWord(readline()));
+        </code></pre>
+
+        <p>
+          The solution runs in <strong>O(n)</strong> time, where <em>n</em> is the
+          length of the sentence.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Edge Cases -->
+      <div class="blog-section output-section">
+        <h2>⚠️ Edge Cases to Consider</h2>
+
+        <ul>
+          <li>Sentence with only one word</li>
+          <li>Multiple words of same maximum length</li>
+          <li>Special characters and punctuation</li>
+          <li>Extra spaces between words</li>
+        </ul>
+
+        <p>
+          Handling these cases cleanly shows strong problem-solving maturity in
+          interviews.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Bonus -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Bonus Practice</h2>
+
+        <ul>
+          <li>Return <em>all</em> longest words instead of one</li>
+          <li>Solve without using <code>split()</code></li>
+          <li>Ignore numeric characters</li>
+          <li>Find the longest word using <code>reduce()</code></li>
+        </ul>
+      </div>
+
+      <div>
+        <p style="margin-top: 60px; font-size: 18px">
+          🚀 <strong>Key Takeaway:</strong> Simple problems are rarely about the
+          solution — they’re about how cleanly and thoughtfully you arrive
+          there.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../merge-sorted/index.html">
+          ← Previous: Merge Two Sorted Arrays
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../../coming-soon.html">
+          Next: Coming Soon →
+        </a>
+      </nav>
+    </article>
+
+    <script src="theme.js"></script>
+  </body>
+</html>
