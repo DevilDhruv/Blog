@@ -206,7 +206,7 @@ function initApp() {
     initActiveNavigation();
 
     // Log initialization
-    console.log('✓ Dev Chronicles blog initialized');
+    console.log('✓ Dhruv Rastogi\'s blog initialized');
 }
 
 // Start when DOM is ready

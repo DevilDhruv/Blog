@@ -633,14 +633,19 @@ a:hover {
 }
 
 /* ============================================================================
-   FOOTER SECTION
+   FOOTER (THEME-AWARE, ANIMATED)
    ============================================================================ */
 
 .footer {
-    background-color: var(--color-text-primary);
-    color: white;
+    background: linear-gradient(
+        to bottom,
+        var(--color-surface),
+        var(--color-bg)
+    );
+    color: var(--color-text-primary);
     padding: var(--spacing-2xl) var(--spacing-md);
     animation: fadeInUp 0.8s ease-out 0.8s both;
+    border-top: 1px solid var(--color-border);
 }
 
 .footer-container {
@@ -656,51 +661,81 @@ a:hover {
 .footer-title {
     font-size: var(--font-size-2xl);
     font-family: var(--font-family-serif);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
     font-weight: 700;
 }
 
 .footer-tagline {
     font-size: var(--font-size-sm);
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-text-secondary);
     font-style: italic;
+    margin-bottom: var(--spacing-lg);
 }
+
+/* ============================================================================
+   SOCIAL LINKS (POLISHED + THEME CONTROLLED)
+   ============================================================================ */
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
 }
 
 .social-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    background-color: rgba(255, 255, 255, 0.1);
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    color: white;
-    transition: all var(--transition-normal);
+
+    /* Theme-driven */
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast),
+        color var(--transition-fast);
 }
 
-.social-link:hover {
-    background-color: var(--color-accent);
-    color: white;
-    transform: translateY(-4px);
+.social-link svg {
+    width: 20px;
+    height: 20px;
 }
+
+/* Hover = lift + soft glow */
+.social-link:hover {
+    transform: translateY(-4px);
+    background-color: var(--color-accent);
+    color: #fff;
+    border-color: transparent;
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.15),
+        0 0 0 6px color-mix(in srgb, var(--color-accent) 15%, transparent);
+}
+
+/* ============================================================================
+   FOOTER BOTTOM
+   ============================================================================ */
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
     text-align: center;
 }
 
 .copyright {
     font-size: var(--font-size-xs);
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-text-tertiary);
 }
+
 
 /* ============================================================================
    ANIMATIONS

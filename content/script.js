@@ -39,6 +39,15 @@ const blogs = [
     tags: ["javascript", "strings", "beginner", "interview"],
     url: "../Learn/longest-word/index.html",
   },
+  {
+    id: 5,
+    title: "Rotate Array in C++ | Interview Question",
+    description:
+      "Learn how to rotate an array in C++ using an efficient algorithm. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-02",
+    tags: ["c++", "arrays", "dsa", "interview", "star"],
+    url: "../Learn/rotate-array/index.html",
+  }
 ];
 
 

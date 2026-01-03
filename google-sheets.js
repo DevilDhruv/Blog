@@ -2,7 +2,7 @@ const form = document.getElementById("subscribe-form");
 const message = document.getElementById("form-message");
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyEZdg5uC9O7hSD7JCwdSeXuw5Ayq5joUJBqc2d_TQIC4VpX0soVUCSDAek6fIzu51LOw/exec"
+  "https://script.google.com/macros/s/AKfycbzedS6lUu1IYbWfDM4NRPElI10_mQk7l-jDKNcsvhTOieAq96qR-AP8v-O6VO8hJJsxeg/exec";
 // ------------------------------------
 // Already subscribed UX
 // ------------------------------------
@@ -31,7 +31,7 @@ form?.addEventListener("submit", async (e) => {
 
   const topics = Array.from(
     form.querySelectorAll("input[name='topics']:checked")
-  ).map(cb => cb.value);
+  ).map((cb) => cb.value);
 
   // ------------------------------------
   // Honeypot (anti-bot)
@@ -53,15 +53,21 @@ form?.addEventListener("submit", async (e) => {
 
   submitBtn.disabled = true;
 
+  const payload = new URLSearchParams({
+    email,
+    topics: topics.join(", "), // Join array into comma-separated string
+    source: location.pathname,
+    company: honeypot ? honeypot.value : "", // Pass the VALUE, not the element
+  });
+
   try {
     const res = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      body: JSON.stringify({
-        email,
-        topics,
-        source: "index.html",
-        timestamp: new Date().toISOString()
-      })
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: payload.toString(), // Don't wrap in another URLSearchParams
+      redirect: "follow", // Important for Google Scripts
     });
 
     const data = await res.json();
@@ -80,12 +86,18 @@ form?.addEventListener("submit", async (e) => {
 
     form.reset();
     submitBtn.disabled = true;
-
+    setTimeout(() => {
+      form.innerHTML = `
+    <p class="form-message success">
+      You’re already subscribed ✨ <br />
+      I’ll only email when it’s worth your time.
+    </p>`;
+      clearTimeout();
+    }, 2000);
   } catch (err) {
     console.error(err);
 
-    message.textContent =
-      "Something went wrong. Please try again later.";
+    message.textContent = "Something went wrong. Please try again later.";
     message.classList.add("error");
 
     submitBtn.disabled = false;
