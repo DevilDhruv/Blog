@@ -38,72 +38,72 @@ function initScrollAnimations() {
  * Handles form submission to Google Sheets
  * Replace GOOGLE_SCRIPT_URL with your actual Google Apps Script endpoint
  */
-const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE"
+// const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE"
 
-function initSubscribeForm() {
-  const form = document.getElementById("subscribe-form")
-  const messageEl = document.getElementById("form-message")
+// function initSubscribeForm() {
+//   const form = document.getElementById("subscribe-form")
+//   const messageEl = document.getElementById("form-message")
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault()
+//   form.addEventListener("submit", async (e) => {
+//     e.preventDefault()
 
-    const submitButton = form.querySelector(".submit-button")
-    const email = form.querySelector("#email").value
-    const checkedTopics = Array.from(form.querySelectorAll('input[name="topics"]:checked')).map(
-      (checkbox) => checkbox.value,
-    )
+//     const submitButton = form.querySelector(".submit-button")
+//     const email = form.querySelector("#email").value
+//     const checkedTopics = Array.from(form.querySelectorAll('input[name="topics"]:checked')).map(
+//       (checkbox) => checkbox.value,
+//     )
 
-    // Validate at least one topic is selected
-    if (checkedTopics.length === 0) {
-      showMessage("Please select at least one topic", "error")
-      return
-    }
+//     // Validate at least one topic is selected
+//     if (checkedTopics.length === 0) {
+//       showMessage("Please select at least one topic", "error")
+//       return
+//     }
 
-    // Disable button and show loading state
-    submitButton.disabled = true
-    submitButton.textContent = "Subscribing..."
-    messageEl.textContent = ""
-    messageEl.className = "form-message"
+//     // Disable button and show loading state
+//     submitButton.disabled = true
+//     submitButton.textContent = "Subscribing..."
+//     messageEl.textContent = ""
+//     messageEl.className = "form-message"
 
-    // Prepare data for submission
-    const formData = {
-      email: email,
-      topics: checkedTopics.join(", "),
-      timestamp: new Date().toISOString(),
-    }
+//     // Prepare data for submission
+//     const formData = {
+//       email: email,
+//       topics: checkedTopics.join(", "),
+//       timestamp: new Date().toISOString(),
+//     }
 
-    try {
-      // Submit to Google Apps Script endpoint
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors", // Required for Google Apps Script
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+//     try {
+//       // Submit to Google Apps Script endpoint
+//       const response = await fetch(GOOGLE_SCRIPT_URL, {
+//         method: "POST",
+//         mode: "no-cors", // Required for Google Apps Script
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData),
+//       })
 
-      // Note: With 'no-cors', we can't read the response
-      // Assume success if no error is thrown
-      showMessage("Successfully subscribed! Check your email for confirmation.", "success")
-      form.reset()
+//       // Note: With 'no-cors', we can't read the response
+//       // Assume success if no error is thrown
+//       showMessage("Successfully subscribed! Check your email for confirmation.", "success")
+//       form.reset()
 
-      console.log("[v0] Form submitted:", formData)
-    } catch (error) {
-      console.error("[v0] Subscription error:", error)
-      showMessage("Something went wrong. Please try again later.", "error")
-    } finally {
-      // Re-enable button
-      submitButton.disabled = false
-      submitButton.textContent = "Subscribe"
-    }
-  })
+//       console.log("[v0] Form submitted:", formData)
+//     } catch (error) {
+//       console.error("[v0] Subscription error:", error)
+//       showMessage("Something went wrong. Please try again later.", "error")
+//     } finally {
+//       // Re-enable button
+//       submitButton.disabled = false
+//       submitButton.textContent = "Subscribe"
+//     }
+//   })
 
-  function showMessage(text, type) {
-    messageEl.textContent = text
-    messageEl.className = `form-message ${type}`
-  }
-}
+//   function showMessage(text, type) {
+//     messageEl.textContent = text
+//     messageEl.className = `form-message ${type}`
+//   }
+// }
 
 // ==========================================
 // Smooth Scroll for CTA Button

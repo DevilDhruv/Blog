@@ -106,12 +106,20 @@
       <div class="categories-container">
         <h2 class="section-title">Explore Topics</h2>
         <div class="categories-grid">
-          <a href="./content/index.html?tag=javascript"
+          <a href="./content/index.html?tag=dsa"
             ><div class="category-card">
               <h3 class="category-title">Data Structures</h3>
               <p class="category-description">
                 Arrays, trees, graphs, dynamic programming, and problem-solving
                 fundamentals.
+              </p>
+            </div></a
+          >
+          <a href="./content/index.html?tag=interview"
+            ><div class="category-card">
+              <h3 class="category-title">Interview Preparation</h3>
+              <p class="category-description">
+                LeetCode, system design, and behavioral interview prep.
               </p>
             </div></a
           >
@@ -150,6 +158,20 @@
       <div class="posts-container">
         <h2 class="section-title">Latest Posts</h2>
         <div class="posts-grid">
+          <article class="post-card">
+            <div class="post-header">
+              <h3 class="post-title">Rotate Array in C++ | Interview Based</h3>
+              <span class="post-tag dsa">Interview</span>
+            </div>
+            <p class="post-description">
+              Complete interview guide to solving Rotate Array in C++. Master
+              problem clarification, 4 optimal approaches, edge cases, testing
+              strategy, and follow-up questions like a top candidate.
+            </p>
+            <a href="./Learn/rotate-array/index.html" class="post-link"
+              >Read more →</a
+            >
+          </article>
           <article class="post-card">
             <div class="post-header">
               <h3 class="post-title">Reversing a String in JavaScript</h3>
@@ -228,6 +250,13 @@
               required
               aria-label="Email address"
             />
+            <input
+              type="text"
+              name="company"
+              tabindex="-1"
+              autocomplete="off"
+              class="honeypot"
+            />
           </div>
 
           <fieldset class="topics-fieldset">
@@ -236,6 +265,10 @@
               <label class="topic-checkbox">
                 <input type="checkbox" name="topics" value="DSA" />
                 <span>DSA</span>
+              </label>
+              <label class="topic-checkbox">
+                <input type="checkbox" name="topics" value="Interview" />
+                <span>Interview Preparation</span>
               </label>
               <label class="topic-checkbox">
                 <input type="checkbox" name="topics" value="JavaScript" />
@@ -279,7 +312,7 @@
             <!-- GitHub SVG unchanged -->
           </a>
           <a
-            href="https://www.linkedin.com/in/dhruv-rastogi-/"
+            href="https://www.linkedin.com/in/dhruv-rastogi01/"
             class="social-link"
             target="_blank"
             rel="noopener noreferrer"
@@ -307,5 +340,6 @@
     </footer>
 
     <script src="./TestPages/Test01/script.js"></script>
+    <script src="./TestPages/Test01/google-sheets.js"></script>
   </body>
 </html>

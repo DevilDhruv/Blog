@@ -49,87 +49,87 @@ function initScrollAnimations() {
  * Handle subscribe form submission
  * Submits data to Google Forms or Google Apps Script
  */
-function initFormHandler() {
-    const form = document.getElementById('subscribeForm');
-    const messageEl = document.getElementById('formMessage');
+// function initFormHandler() {
+//     const form = document.getElementById('subscribeForm');
+//     const messageEl = document.getElementById('formMessage');
 
-    if (!form) return;
+//     if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+//     form.addEventListener('submit', async (e) => {
+//         e.preventDefault();
 
-        // Get form data
-        const email = form.querySelector('.email-input').value.trim();
-        const selectedTopics = Array.from(form.querySelectorAll('input[name="topics"]:checked'))
-            .map(checkbox => checkbox.value);
+//         // Get form data
+//         const email = form.querySelector('.email-input').value.trim();
+//         const selectedTopics = Array.from(form.querySelectorAll('input[name="topics"]:checked'))
+//             .map(checkbox => checkbox.value);
 
-        // Clear previous message
-        messageEl.textContent = '';
-        messageEl.className = '';
+//         // Clear previous message
+//         messageEl.textContent = '';
+//         messageEl.className = '';
 
-        // Validate email
-        if (!isValidEmail(email)) {
-            showMessage('Please enter a valid email address.', 'error');
-            return;
-        }
+//         // Validate email
+//         if (!isValidEmail(email)) {
+//             showMessage('Please enter a valid email address.', 'error');
+//             return;
+//         }
 
-        try {
-            // Show loading state
-            const submitBtn = form.querySelector('.submit-button');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Subscribing...';
-            submitBtn.disabled = true;
+//         try {
+//             // Show loading state
+//             const submitBtn = form.querySelector('.submit-button');
+//             const originalText = submitBtn.textContent;
+//             submitBtn.textContent = 'Subscribing...';
+//             submitBtn.disabled = true;
 
-            // Send data to Google Forms or Google Apps Script
-            // Replace this URL with your Google Forms endpoint or Google Apps Script deployment URL
-            const googleFormsUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+//             // Send data to Google Forms or Google Apps Script
+//             // Replace this URL with your Google Forms endpoint or Google Apps Script deployment URL
+//             const googleFormsUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
             
-            const formData = new FormData();
-            // Replace field names with your actual Google Form field names
-            formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
-            formData.append('entry.YOUR_TOPICS_FIELD_ID', selectedTopics.join(', '));
+//             const formData = new FormData();
+//             // Replace field names with your actual Google Form field names
+//             formData.append('entry.YOUR_EMAIL_FIELD_ID', email);
+//             formData.append('entry.YOUR_TOPICS_FIELD_ID', selectedTopics.join(', '));
 
-            // Send request with no-cors mode to avoid CORS issues
-            const response = await fetch(googleFormsUrl, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            });
+//             // Send request with no-cors mode to avoid CORS issues
+//             const response = await fetch(googleFormsUrl, {
+//                 method: 'POST',
+//                 body: formData,
+//                 mode: 'no-cors'
+//             });
 
-            // Reset form
-            form.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
+//             // Reset form
+//             form.reset();
+//             submitBtn.textContent = originalText;
+//             submitBtn.disabled = false;
 
-            // Show success message
-            showMessage('✓ Successfully subscribed! Check your email for confirmation.', 'success');
+//             // Show success message
+//             showMessage('✓ Successfully subscribed! Check your email for confirmation.', 'success');
 
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showMessage('✗ Something went wrong. Please try again.', 'error');
+//         } catch (error) {
+//             console.error('Form submission error:', error);
+//             showMessage('✗ Something went wrong. Please try again.', 'error');
             
-            const submitBtn = form.querySelector('.submit-button');
-            submitBtn.textContent = 'Subscribe';
-            submitBtn.disabled = false;
-        }
-    });
+//             const submitBtn = form.querySelector('.submit-button');
+//             submitBtn.textContent = 'Subscribe';
+//             submitBtn.disabled = false;
+//         }
+//     });
 
-    /**
-     * Validate email format
-     */
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
+//     /**
+//      * Validate email format
+//      */
+//     function isValidEmail(email) {
+//         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//         return emailRegex.test(email);
+//     }
 
-    /**
-     * Show form message with type (success/error)
-     */
-    function showMessage(text, type) {
-        messageEl.textContent = text;
-        messageEl.className = `form-message ${type}`;
-    }
-}
+//     /**
+//      * Show form message with type (success/error)
+//      */
+//     function showMessage(text, type) {
+//         messageEl.textContent = text;
+//         messageEl.className = `form-message ${type}`;
+//     }
+// }
 
 // ============================================================================
 // SMOOTH SCROLL NAVIGATION
@@ -201,7 +201,7 @@ function initActiveNavigation() {
 function initApp() {
     // Initialize features
     initScrollAnimations();
-    initFormHandler();
+    // initFormHandler();
     initSmoothScroll();
     initActiveNavigation();
 

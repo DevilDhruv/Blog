@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Rotate Array in C++ | Complete Interview-Ready Masterclass</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Complete interview guide to solving Rotate Array in C++. Master problem clarification, 4 optimal approaches, edge cases, testing strategy, and follow-up questions like a top candidate."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="rotate array c++, leetcode rotate array, array rotation interview, reversal algorithm, cycle replacement, interview preparation, system design"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rotate Array in C++ — Complete Interview Masterclass" />
+    <meta
+      property="og:description"
+      content="From problem understanding to optimal solution. Learn how top candidates approach this problem step-by-step with real interview techniques."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/rotate-array/index.html"
+    />
+
+    <!-- Prism -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Arrays · C++ · Interview Masterclass
+        </p>
+
+        <h1 class="intro-div-header">
+          Rotate Array in C++ — From Clarification to Interview Victory ⚡
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          This is not just about rotating an array. This is about <strong>how top candidates think, communicate, and execute under pressure</strong>. 
+          This guide walks you through exactly what happens in a real FAANG interview—from the moment you hear the problem to the final follow-up question. 
+          You'll learn the mindset that separates good candidates from great ones.
+        </p>
+      </div>
+
+      <!-- Thunder moment -->
+      <div class="blog-section">
+        <p style="font-style: italic; opacity: 0.85;">
+          ⚡ <strong>The Real Interview Secret:</strong>  
+          Most candidates jump to coding immediately. Great candidates spend 3–5 minutes understanding the problem first. 
+          This is where you win or lose the interview.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 1: INTERVIEW SETUP -->
+      <div class="blog-section core-idea-section">
+        <h2>🎯 Section 1: The Interview Starts — What You Do First</h2>
+
+        <p>
+          The interviewer gives you the problem. You don't immediately code. Instead, you do this:
+        </p>
+
+        <h3>Step 1.1: Listen and Write Down Key Points</h3>
+        <p>
+          The moment the interviewer finishes speaking, you write down the <strong>exact problem statement</strong> on your whiteboard or document:
+        </p>
+        <pre><code class="language-cpp">
+/* Problem: Rotate Array
+ * ========================
+ * Given: An integer array nums, integer k
+ * Task: Rotate array to the RIGHT by k steps
+ * Example: nums = [1,2,3,4,5,6,7], k = 3
+ *          Output: [5,6,7,1,2,3,4]
+ * 
+ * Key Observations:
+ * - Array is finite and in-memory
+ * - k can be larger than array size (k=10 on array of 7)
+ * - We need to handle edge cases
+ */
+        </code></pre>
+
+        <p>
+          Why? This shows you're <strong>organized</strong> and <strong>detail-oriented</strong>. Interviewers immediately gain confidence.
+        </p>
+
+        <h3>Step 1.2: Ask Clarifying Questions (But Not Too Many)</h3>
+        <p>
+          Ask 2–3 smart questions. Not 10. Balance is key.
+        </p>
+
+        <ul>
+          <li><strong>Q:</strong> "Can I modify the array in-place, or should I return a new array?"</li>
+          <li><strong>A (likely):</strong> "In-place is preferred."</li>
+          <li style="margin-top: 15px;"><strong>Q:</strong> "What if k is larger than the array size? For example, k=10 on an array of size 7?"</li>
+          <li><strong>A (likely):</strong> "Good catch. You should handle that. k=10 on array of 7 is the same as k=3."</li>
+          <li style="margin-top: 15px;"><strong>Q:</strong> "Are there any constraints on array size and value ranges?"</li>
+          <li><strong>A (likely):</strong> "1 ≤ n ≤ 10^5, and values can be any integer."</li>
+        </ul>
+
+        <p style="margin-top: 20px;">
+          Now you have <strong>confirmed details</strong>. This is critical.
+        </p>
+
+        <h3>Step 1.3: State Your Understanding and Goals</h3>
+        <p>
+          Say it out loud:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "So, I need to rotate an array in-place to the right by k steps. k can be larger than the array size, 
+          so I'll need to use modulo. My goal is to achieve O(n) time and O(1) space if possible. Let me start with the obvious approach first."
+        </p>
+
+        <p>
+          This statement tells the interviewer:
+        </p>
+        <ul>
+          <li>You understand the problem</li>
+          <li>You're thinking about constraints</li>
+          <li>You're thinking about optimization</li>
+          <li>You have a plan</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 2: NAIVE APPROACH -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Section 2: Start With the Brute Force (Don't Code It Yet)</h2>
+
+        <p>
+          <strong>The interviewer watches your thinking, not your coding speed.</strong> This is where most candidates fail. 
+          They skip straight to the optimal solution, which looks rehearsed. Instead, start naive.
+        </p>
+
+        <h3>Step 2.1: Verbalize the Brute Force Approach</h3>
+
+        <p>
+          Say this to your interviewer:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "The most obvious approach that comes to mind: I could shift all elements one position to the right, k times. 
+          So for k=3, I'd do 3 separate rotations. Each rotation takes O(n) time. So overall: O(n × k) time, O(1) space.
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          But wait—this is inefficient. If k is close to n (like k=100,000 on an array of size 100,001), 
+          this becomes O(n²), which is way too slow. Let me think of something better."
+        </p>
+
+        <p>
+          Notice: You <strong>recognized the flaw yourself</strong>. This is gold to an interviewer.
+        </p>
+
+        <h3>Step 2.2: Why This Approach Fails</h3>
+
+        <pre><code class="language-cpp">
+/* Brute Force: Shift k times
+ * ===========================
+ * For each of k iterations:
+ *   - Move last element to front
+ *   - Shift all others right
+ * 
+ * Problem: k iterations × n shifts = O(n*k)
+ * 
+ * If k = 100,000 and n = 100,001:
+ *   - This becomes ~10^10 operations
+ *   - Interview fails here
+ * 
+ * Trade-off: Simple to understand, but inefficient
+ */
+        </code></pre>
+
+        <p>
+          <strong>Key insight for interview:</strong> Show that you rejected this approach 
+          <strong>because you thought about the input constraints</strong>, not because you memorized the solution.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 3: EXTRA SPACE APPROACH -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Section 3: Approach 1 — Extra Array (Clear & Safe)</h2>
+
+        <p>
+          Now you move to a better approach. This one uses O(n) extra space but is O(n) time—much better.
+        </p>
+
+        <h3>Step 3.1: Walk Through the Logic Before Coding</h3>
+
+        <p style="font-style: italic; color: #666;">
+          "Let me think about this differently. If I rotate by k positions to the right, 
+          where does each element end up? Element at index i goes to index (i + k) % n. 
+          I can use this to place each element in its final position using a temporary array."
+        </p>
+
+        <p>
+          Then, on the whiteboard, manually walk through the example:
+        </p>
+
+        <pre><code class="language-cpp">
+/* Example: nums = [1,2,3,4,5,6,7], k = 3
+ * 
+ * Index:     0 1 2 3 4 5 6
+ * Original: [1,2,3,4,5,6,7]
+ * 
+ * New position formula: (i + k) % n
+ * 
+ * Element 1 (i=0): goes to (0+3)%7 = 3 → temp[3] = 1
+ * Element 2 (i=1): goes to (1+3)%7 = 4 → temp[4] = 2
+ * Element 3 (i=2): goes to (2+3)%7 = 5 → temp[5] = 3
+ * Element 4 (i=3): goes to (3+3)%7 = 6 → temp[6] = 4
+ * Element 5 (i=4): goes to (4+3)%7 = 0 → temp[0] = 5
+ * Element 6 (i=5): goes to (5+3)%7 = 1 → temp[1] = 6
+ * Element 7 (i=6): goes to (6+3)%7 = 2 → temp[2] = 7
+ * 
+ * temp = [5,6,7,1,2,3,4] ✓
+ */
+        </code></pre>
+
+        <p>
+          See? You're showing the logic <strong>step-by-step with the example</strong>. This is confidence-building.
+        </p>
+
+        <h3>Step 3.2: Code the Solution</h3>
+
+        <pre><code class="language-cpp">
+void rotate(vector<int>& nums, int k) {
+    int n = nums.size();
+    k = k % n;  // Handle k > n
+    
+    vector<int> temp(n);
+    
+    // Place each element at its rotated position
+    for(int i = 0; i < n; i++) {
+        temp[(i + k) % n] = nums[i];
+    }
+    
+    // Copy back to original array
+    nums = temp;
+}
+        </code></pre>
+
+        <h3>Step 3.3: Analyze the Solution</h3>
+
+        <pre><code class="language-cpp">
+/* Analysis:
+ * Time Complexity: O(n)
+ *   - Loop through array once: n iterations
+ *   - Each assignment: O(1)
+ * 
+ * Space Complexity: O(n)
+ *   - Extra temp array of size n
+ * 
+ * Trade-offs:
+ * ✓ Simple, easy to understand
+ * ✓ O(n) time
+ * ✗ Uses O(n) extra space (not optimal)
+ * ✗ The interviewer will ask: "Can we do this in-place?"
+ */
+        </code></pre>
+
+        <p>
+          <strong>This is the moment to show initiative:</strong>
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "This works and is efficient time-wise, but uses extra space. The interviewer probably expects an in-place solution. 
+          Let me think about this differently using a clever trick I know—the reversal algorithm."
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 4: REVERSAL ALGORITHM (OPTIMAL) -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Section 4: Approach 2 — Reversal Algorithm (The Interview Favorite)</h2>
+
+        <p>
+          This is where you show mastery. The reversal algorithm is elegant and uses O(1) space. 
+          Most strong candidates know this, and this is what interviewers expect.
+        </p>
+
+        <h3>Step 4.1: Explain the Core Insight</h3>
+
+        <p>
+          Before coding, explain the idea:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "Here's a clever observation. If I reverse three parts of the array in sequence, 
+          I can achieve rotation without extra space. Let me walk through this:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          Original: [1,2,3,4,5,6,7], k=3
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          Step 1: Reverse the first (n-k) elements: [4,3,2,1,5,6,7]
+          Step 2: Reverse the last k elements: [4,3,2,1,7,6,5]
+          Step 3: Reverse the entire array: [5,6,7,1,2,3,4] ✓"
+        </p>
+
+        <h3>Step 4.2: Detailed Walkthrough with Example</h3>
+
+        <pre><code class="language-cpp">
+/* Reversal Algorithm Walkthrough
+ * ==============================
+ * 
+ * Input: [1,2,3,4,5,6,7], k = 3
+ * n = 7, so we're reversing:
+ *   Part 1: First (n-k) = 4 elements: indices 0-3
+ *   Part 2: Last k = 3 elements: indices 4-6
+ * 
+ * Initial:     [1,2,3,4,5,6,7]
+ * 
+ * Step 1: Reverse indices 0-3
+ *         [4,3,2,1] | [5,6,7]
+ * 
+ * Step 2: Reverse indices 4-6
+ *         [4,3,2,1] | [7,6,5]
+ * 
+ * Step 3: Reverse entire array (0-6)
+ *         [5,6,7,1,2,3,4] ✓
+ * 
+ * Why does this work?
+ * - Reversing first (n-k) moves last k to the front
+ * - But they're in reverse order
+ * - Reversing last k fixes the order
+ * - Final reverse puts everything in correct positions
+ */
+        </code></pre>
+
+        <h3>Step 4.3: Write the Helper Function First</h3>
+
+        <p>
+          <strong>Modularization is key.</strong> Write a helper function for reversing:
+        </p>
+
+        <pre><code class="language-cpp">
+// Helper function: reverse array from index left to right
+void reverse(vector<int>& nums, int left, int right) {
+    while(left < right) {
+        swap(nums[left], nums[right]);
+        left++;
+        right--;
+    }
+}
+        </code></pre>
+
+        <p>
+          <strong>Why separate function?</strong> It shows good coding practices. Say this to your interviewer:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "I'm creating a helper function because it makes the main logic clean and readable. 
+          If I need to reverse arrays elsewhere, I have a reusable function. 
+          This is good practice for production code."
+        </p>
+
+        <h3>Step 4.4: Write the Main Solution</h3>
+
+        <pre><code class="language-cpp">
+void rotate(vector<int>& nums, int k) {
+    int n = nums.size();
+    
+    // Normalize k to be within array bounds
+    k = k % n;
+    
+    // Edge case: k = 0 means no rotation
+    if(k == 0) return;
+    
+    // Step 1: Reverse first (n - k) elements
+    reverse(nums, 0, n - k - 1);
+    
+    // Step 2: Reverse last k elements
+    reverse(nums, n - k, n - 1);
+    
+    // Step 3: Reverse entire array
+    reverse(nums, 0, n - 1);
+}
+        </code></pre>
+
+        <h3>Step 4.5: Trace Through Your Code with the Example</h3>
+
+        <p>
+          Now trace through with k=3 on [1,2,3,4,5,6,7]:
+        </p>
+
+        <pre><code class="language-cpp">
+/* Execution Trace:
+ * 
+ * Input: nums = [1,2,3,4,5,6,7], k = 3
+ * n = 7
+ * k = 3 % 7 = 3 (no change in this case)
+ * k != 0, so continue
+ * 
+ * Reverse(nums, 0, 3):  // Reverse indices 0-3
+ * [1,2,3,4,5,6,7] → [4,3,2,1,5,6,7]
+ * 
+ * Reverse(nums, 4, 6):  // Reverse indices 4-6
+ * [4,3,2,1,5,6,7] → [4,3,2,1,7,6,5]
+ * 
+ * Reverse(nums, 0, 6):  // Reverse entire array
+ * [4,3,2,1,7,6,5] → [5,6,7,1,2,3,4] ✓ CORRECT!
+ */
+        </code></pre>
+
+        <h3>Step 4.6: Complexity Analysis</h3>
+
+        <pre><code class="language-cpp">
+/* Complexity Analysis:
+ * 
+ * Time Complexity: O(n)
+ *   - 3 reverse operations
+ *   - Each reverse: O(n) in the worst case
+ *   - Total: O(n) + O(n) + O(n) = O(3n) = O(n)
+ * 
+ * Space Complexity: O(1)
+ *   - Only using swap operations (in-place)
+ *   - No extra data structures
+ *   - This is optimal!
+ * 
+ * Why this is better:
+ * ✓ O(n) time (same as extra array approach)
+ * ✓ O(1) space (better than extra array)
+ * ✓ In-place modification (what interviewers want)
+ * ✓ Clean, readable code
+ * ✓ Shows understanding of reversal technique
+ */
+        </code></pre>
+
+        <p>
+          At this point, say:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "This is optimal. O(n) time, O(1) space, and it modifies the array in-place. 
+          We cannot do better than O(n) time because we need to touch every element at least once."
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 5: CYCLE REPLACEMENT -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Section 5: Approach 3 — Cycle Replacement (Advanced/Optional)</h2>
+
+        <p>
+          If you've explained the reversal algorithm well and the interviewer seems satisfied, 
+          you can optionally mention this approach. It shows deeper understanding, but it's harder to explain.
+        </p>
+
+        <p style="color: #ff6b6b;">
+          ⚠️ <strong>Warning:</strong> Only explain this if you're confident. 
+          It's easy to confuse yourself, which hurts your score more than helps.
+        </p>
+
+        <h3>Step 5.1: When to Mention This</h3>
+
+        <p>
+          Say something like:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "There's another approach called cycle replacement that uses a mathematical property of array rotations. 
+          It's more complex to implement, but also achieves O(n) time and O(1) space. Would you like me to explain it?"
+        </p>
+
+        <p>
+          If the interviewer says <strong>"Sure, go ahead"</strong>, explain. If they say <strong>"The reversal solution looks good"</strong>, 
+          don't force it. You already showed mastery.
+        </p>
+
+        <h3>Step 5.2: The Core Idea</h3>
+
+        <p>
+          Each element belongs to a "cycle." For example, in rotating by 3 on array of size 7:
+        </p>
+
+        <pre><code class="language-cpp">
+/* Cycle Replacement Concept
+ * =========================
+ * 
+ * Index i moves to position (i + k) % n
+ * Position (i + k) % n moves to ((i + k) + k) % n
+ * Continue until we return to i (forming a cycle)
+ * 
+ * Example: nums = [1,2,3,4,5,6,7], k = 3, n = 7
+ * 
+ * Cycle starting at 0:
+ *   0 → (0+3)%7 = 3
+ *   3 → (3+3)%7 = 6
+ *   6 → (6+3)%7 = 2
+ *   2 → (2+3)%7 = 5
+ *   5 → (5+3)%7 = 1
+ *   1 → (1+3)%7 = 4
+ *   4 → (4+3)%7 = 0 (back to start)
+ * 
+ * This single cycle visits all 7 elements
+ * We rotate all elements in this cycle by placing them in their final positions
+ * 
+ * In some cases (e.g., GCD(k,n) > 1), there are multiple cycles
+ * We need to process each cycle
+ */
+        </code></pre>
+
+        <h3>Step 5.3: Implementation</h3>
+
+        <pre><code class="language-cpp">
+void rotate(vector<int>& nums, int k) {
+    int n = nums.size();
+    k = k % n;
+    
+    if(k == 0) return;
+    
+    int count = 0;  // Track how many elements we've rotated
+    
+    // Process each cycle
+    for(int start = 0; count < n; start++) {
+        int current = start;
+        int previous = nums[start];
+        
+        // Traverse the cycle
+        do {
+            int nextPos = (current + k) % n;
+            // Rotate: store next value, place previous value
+            int temp = nums[nextPos];
+            nums[nextPos] = previous;
+            previous = temp;
+            current = nextPos;
+            count++;
+        } while(current != start);
+    }
+}
+        </code></pre>
+
+        <h3>Step 5.4: Analysis</h3>
+
+        <pre><code class="language-cpp">
+/* Cycle Replacement Analysis
+ * 
+ * Time Complexity: O(n)
+ *   - Every element is visited exactly once (across all cycles)
+ * 
+ * Space Complexity: O(1)
+ *   - No extra array, just a few pointers
+ * 
+ * Trade-offs:
+ * ✓ O(n) time and O(1) space
+ * ✓ Shows deep understanding of mathematical properties
+ * ✗ Harder to understand and explain
+ * ✗ More error-prone to implement in an interview
+ * ✗ No practical advantage over reversal algorithm
+ * 
+ * Verdict: This is impressive but risky. Only use if you're very confident.
+ */
+        </code></pre>
+
+        <p>
+          Most interviewers will be more impressed by a <strong>clear reversal solution</strong> 
+          than a <strong>confused cycle replacement explanation.</strong>
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 6: EDGE CASES AND ERROR HANDLING -->
+      <div class="blog-section bonus-section">
+        <h2>🛡 Section 6: Edge Cases & Error Handling (This Matters!)</h2>
+
+        <p>
+          This is where many candidates fail. After presenting the solution, 
+          say: <strong>"Let me think about edge cases and potential issues."</strong>
+        </p>
+
+        <h3>Step 6.1: List Edge Cases You Should Test</h3>
+
+        <pre><code class="language-cpp">
+/* Edge Cases to Consider:
+ * 
+ * 1. k = 0 (no rotation)
+ *    Input: [1,2,3], k = 0
+ *    Expected: [1,2,3] (unchanged)
+ * 
+ * 2. k = n (full rotation)
+ *    Input: [1,2,3], k = 3
+ *    Expected: [1,2,3] (back to original)
+ *    Our code: k % n = 3 % 3 = 0 ✓ Handles correctly
+ * 
+ * 3. k > n (multiple full rotations)
+ *    Input: [1,2,3,4,5], k = 12
+ *    12 % 5 = 2, so effectively k = 2
+ *    Expected: [4,5,1,2,3]
+ * 
+ * 4. Single element array
+ *    Input: [1], k = 5
+ *    Expected: [1] (any rotation is itself)
+ * 
+ * 5. Empty array (shouldn't happen per constraints, but good to be safe)
+ *    Input: [], k = 0
+ *    Expected: []
+ * 
+ * 6. Negative k (not mentioned, but good to ask)
+ *    "Should I assume k is always non-negative?"
+ *    (Usually yes, but clarify)
+ */
+        </code></pre>
+
+        <h3>Step 6.2: Add Safety Checks</h3>
+
+        <p>
+          Improve your solution with defensive programming:
+        </p>
+
+        <pre><code class="language-cpp">
+void rotate(vector<int>& nums, int k) {
+    // Defensive check: handle edge cases
+    if(nums.empty()) return;  // Empty array
+    
+    int n = nums.size();
+    k = k % n;  // Normalize k (handles k > n and k = 0)
+    
+    if(k == 0) return;  // No rotation needed
+    
+    // Helper function to reverse
+    auto reverse = [&](int left, int right) {
+        while(left < right) {
+            swap(nums[left], nums[right]);
+            left++;
+            right--;
+        }
+    };
+    
+    // Reversal algorithm
+    reverse(0, n - k - 1);
+    reverse(n - k, n - 1);
+    reverse(0, n - 1);
+}
+        </code></pre>
+
+        <p>
+          Say to your interviewer:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "I've added checks for empty arrays and optimized the k=0 case. 
+          In production, I would also add unit tests for these edge cases to ensure robustness."
+        </p>
+
+        <h3>Step 6.3: Manual Test Cases</h3>
+
+        <p>
+          Manually test a few cases:
+        </p>
+
+        <pre><code class="language-cpp">
+/* Manual Testing:
+ * 
+ * Test 1: [1,2,3], k = 1
+ * Expected: [3,1,2]
+ * k = 1 % 3 = 1
+ * Reverse [1] (0 to 1): [1,2,3]
+ * Reverse [2,3] (2 to 2): [1,2,3]
+ * Reverse all: [3,2,1] ✗ WRONG!
+ * 
+ * Wait, let me recalculate:
+ * Reverse (0, 3-1-1) = Reverse (0, 1): [2,1,3]
+ * Reverse (3-1, 3-1) = Reverse (2, 2): [2,1,3] (no change, single element)
+ * Reverse (0, 2): [3,1,2] ✓ CORRECT!
+ * 
+ * Test 2: [1,2,3,4,5], k = 7
+ * k = 7 % 5 = 2, so effective k = 2
+ * Expected: [4,5,1,2,3]
+ * Reverse (0, 2): [3,2,1,4,5]
+ * Reverse (3, 4): [3,2,1,5,4]
+ * Reverse (0, 4): [4,5,1,2,3] ✓ CORRECT!
+ */
+        </code></pre>
+
+        <p>
+          <strong>Key interviewer moment:</strong> If you catch and fix an error during manual testing, 
+          that's <strong>excellent</strong>. It shows you don't blindly trust your code.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 7: OPTIMIZATION & FOLLOW-UPS -->
+      <div class="blog-section bonus-section">
+        <h2>🚀 Section 7: Optimization Questions & Follow-ups</h2>
+
+        <p>
+          Once your solution is done, proactively ask for follow-ups. 
+          This shows you're thinking beyond the basic solution.
+        </p>
+
+        <h3>Step 7.1: Ask These Questions Yourself</h3>
+
+        <p>
+          Don't wait for the interviewer to ask. Say:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "A few questions I'd like to consider:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          1. Can we optimize further if the array is very large (10^9 elements)?
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          2. What if the array doesn't fit in memory and arrives as a stream?
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          3. What if this is a distributed system—how would you rotate a very large array across multiple machines?"
+        </p>
+
+        <h3>Step 7.2: Answer the Follow-ups (Even if Speculative)</h3>
+
+        <p>
+          <strong>Follow-up 1: Array doesn't fit in memory</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+/* Streaming & Out-of-Core Rotation
+ * =================================
+ * 
+ * Problem: Array of 10^9 elements doesn't fit in RAM
+ * 
+ * Approach: Chunk-based processing
+ * 
+ * 1. Read chunks from disk (e.g., 1GB at a time)
+ * 2. Perform reversal operations on chunks
+ * 3. Write chunks back to disk
+ * 4. Use multiple passes to achieve full rotation
+ * 
+ * This is a divide-and-conquer approach:
+ * - Break problem into chunks
+ * - Process each chunk
+ * - Combine results
+ * 
+ * Time: O(n) (still touch each element once)
+ * Space: O(chunk_size) (not O(n))
+ * 
+ * Implementation would use file I/O instead of in-memory arrays
+ */
+        </code></pre>
+
+        <p>
+          <strong>Follow-up 2: Streaming input</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+/* Streaming/Real-time Rotation
+ * ============================
+ * 
+ * Problem: Array arrives as a stream (can't store all at once)
+ * 
+ * Challenge: We need to know array size and k to perform rotation
+ * But stream doesn't give us size upfront
+ * 
+ * Solution options:
+ * 
+ * Option A: Two-pass streaming
+ * - First pass: Count elements (determine size)
+ * - Second pass: Apply rotation algorithm
+ * 
+ * Option B: Circular buffer
+ * - Maintain a rolling window
+ * - As new elements arrive, insert at rotated position
+ * 
+ * Option C: External storage
+ * - Store stream to disk as arrives
+ * - Perform rotation after stream ends
+ * - Output rotated result
+ * 
+ * Trade-off: More passes = more I/O but less memory
+ */
+        </code></pre>
+
+        <p>
+          <strong>Follow-up 3: Distributed system</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+/* Distributed Array Rotation
+ * ==========================
+ * 
+ * Problem: 10 billion elements split across 10 machines
+ * 
+ * Approach: Map-Reduce style
+ * 
+ * Step 1: Distribute data
+ * - Machine 1: Elements 0 to 999,999,999
+ * - Machine 2: Elements 1,000,000,000 to 1,999,999,999
+ * - ... (and so on)
+ * 
+ * Step 2: Local rotation on each machine
+ * - Each machine applies reversal to its chunk
+ * 
+ * Step 3: Global coordination
+ * - After local rotations, redistribute data across machines
+ *   based on new indices
+ * 
+ * Step 4: Combine results
+ * - All machines have their final portions
+ * 
+ * This is complex and requires coordination protocols,
+ * but scales to massive data.
+ * 
+ * Complexity depends on network latency and data redistribution cost
+ */
+        </code></pre>
+
+        <p>
+          Say something like:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "For truly massive scale, you'd need to think about distributed systems, 
+          data sharding, and network overhead. The core algorithm stays O(n), 
+          but the system design gets much more complex."
+        </p>
+
+        <p>
+          If the interviewer likes your thinking here, they might dig deeper into system design. 
+          That's a good sign—you've impressed them.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 8: EXPERT INTERVIEW TECHNIQUES -->
+      <div class="blog-section bonus-section">
+        <h2>💎 Section 8: Advanced Interview Techniques (Elevate Your Game)</h2>
+
+        <h3>Technique 1: Time Yourself and Communicate Progress</h3>
+
+        <p>
+          Good interviewees are aware of time:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "I've explained the brute force and the reversal approach, walked through examples, 
+          and discussed edge cases. We've covered a lot in about 15 minutes. 
+          Do you want me to code this up now, or discuss follow-ups?"
+        </p>
+
+        <h3>Technique 2: Offer Multiple Perspectives</h3>
+
+        <p>
+          When you present a solution, briefly mention alternatives:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "There are at least 3 valid approaches: extra array (easy to understand), 
+          reversal (optimal), and cycle replacement (mathematically elegant). 
+          I went with reversal because it's the best balance of simplicity and optimization."
+        </p>
+
+        <h3>Technique 3: Code Incrementally, Not Explosively</h3>
+
+        <p>
+          Don't write 40 lines of code at once. Explain as you code:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "First, I'll write the reverse helper function because the main logic depends on it. 
+          [Write function.] Now, I'll write the main rotate function. [Write main logic.] 
+          Finally, I'll add the k normalization at the top."
+        </p>
+
+        <h3>Technique 4: Ask for Feedback During Development</h3>
+
+        <p>
+          Don't code in silence:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "Does this approach make sense so far? [Interviewer nods.] 
+          Great, let me add the second reverse operation..."
+        </p>
+
+        <h3>Technique 5: Demonstrate Awareness of Trade-offs</h3>
+
+        <p>
+          Every solution has trade-offs. Show you understand them:
+        </p>
+
+        <pre><code class="language-cpp">
+/* Trade-off Analysis:
+ * 
+ * Approach          | Time   | Space | Pros                  | Cons
+ * ================================================================================
+ * Brute Force       | O(nk)  | O(1)  | Simple                | Too slow for large k
+ * Extra Array       | O(n)   | O(n)  | Easy to understand    | Uses extra memory
+ * Reversal          | O(n)   | O(1)  | Optimal, elegant      | Less intuitive
+ * Cycle Replace     | O(n)   | O(1)  | Shows deep math skill | Hard to implement
+ * 
+ * Recommendation: Use Reversal for most interviews
+ */
+        </code></pre>
+
+        <h3>Technique 6: Show Your Debugging Skills</h3>
+
+        <p>
+          If you make a small mistake, catch it and fix it calmly:
+        </p>
+
+        <p style="font-style: italic; color: #666;">
+          "Wait, I think I made an off-by-one error here. Let me trace through... 
+          Actually, I had the indices backwards. Let me correct that."
+        </p>
+
+        <p>
+          This is <strong>much better</strong> than nervously erasing and rewriting.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 9: COMMON MISTAKES TO AVOID -->
+      <div class="blog-section bonus-section">
+        <h2>❌ Section 9: Common Mistakes Candidates Make</h2>
+
+        <h3>Mistake 1: Not Normalizing k</h3>
+
+        <p>
+          <strong>Wrong:</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+void rotate(vector<int>& nums, int k) {
+    // Forgot k = k % n
+    reverse(nums, 0, nums.size() - k - 1);  // CRASH if k > n!
+}
+        </code></pre>
+
+        <p>
+          <strong>Right:</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+void rotate(vector<int>& nums, int k) {
+    k = k % nums.size();  // Always normalize!
+    // ...
+}
+        </code></pre>
+
+        <h3>Mistake 2: Forgetting Edge Cases</h3>
+
+        <p>
+          Don't assume k > 0 or array size > 1. Add checks:
+        </p>
+
+        <pre><code class="language-cpp">
+if(nums.empty() || k == 0) return;
+        </code></pre>
+
+        <h3>Mistake 3: Bad Variable Names</h3>
+
+        <p>
+          <strong>Bad:</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+for(int i = 0; i < n; i++) {
+    // What does i represent? Hard to read
+}
+        </code></pre>
+
+        <p>
+          <strong>Good:</strong>
+        </p>
+
+        <pre><code class="language-cpp">
+int n = nums.size();
+int k = k % n;
+// Use descriptive variable names throughout
+        </code></pre>
+
+        <h3>Mistake 4: Not Explaining Your Code</h3>
+
+        <p>
+          Silence during coding is bad. Always talk:
+        </p>
+
+        <pre><code class="language-cpp">
+// Bad: Write code silently
+// Good: "I'm now implementing the reverse helper because..."
+        </code></pre>
+
+        <h3>Mistake 5: Jumping to Optimal Without Explaining Naive</h3>
+
+        <p>
+          If you go straight to reversal, interviewer thinks you memorized it.
+          Always show the thought progression.
+        </p>
+
+        <h3>Mistake 6: Not Testing Your Code</h3>
+
+        <p>
+          After writing, manually test with examples:
+        </p>
+
+        <pre><code class="language-cpp">
+// Test: [1,2,3,4,5], k = 2
+// Expected: [4,5,1,2,3]
+// Trace through your code to verify
+        </code></pre>
+      </div>
+
+      <hr />
+
+      <!-- SECTION 10: FINAL CHECKLIST -->
+      <div class="blog-section bonus-section">
+        <h2>✅ Section 10: Pre-Interview Checklist</h2>
+
+        <p>
+          Before your interview, make sure you can do this:
+        </p>
+
+        <ul>
+          <li><strong>☐ Explain the problem in your own words</strong> without the problem statement</li>
+          <li><strong>☐ Describe 3 approaches</strong> and why you chose one</li>
+          <li><strong>☐ Walk through an example by hand</strong> on paper or whiteboard</li>
+          <li><strong>☐ Write the solution from scratch</strong> without looking it up</li>
+          <li><strong>☐ Analyze time and space complexity correctly</strong></li>
+          <li><strong>☐ Test edge cases</strong> (k=0, k=n, k>n, single element)</li>
+          <li><strong>☐ Add error handling</strong> defensively</li>
+          <li><strong>☐ Explain trade-offs</strong> between approaches</li>
+          <li><strong>☐ Answer a follow-up question</strong> about scaling</li>
+          <li><strong>☐ Communicate clearly throughout</strong> (think out loud)</li>
+        </ul>
+
+        <p>
+          If you can check all of these, you're ready for the interview.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- FINAL SECTION -->
+      <div class="blog-section bonus-section">
+        <h2>🎓 Final Words: What Interviewers Actually Care About</h2>
+
+        <p>
+          Here's the secret: <strong>Your code matters less than your thinking.</strong>
+        </p>
+
+        <p>
+          Interviewers evaluate you on:
+        </p>
+
+        <ul>
+          <li><strong>Problem-solving approach:</strong> Do you think logically and progressively?</li>
+          <li><strong>Communication:</strong> Can you explain your ideas clearly?</li>
+          <li><strong>Technical depth:</strong> Do you understand algorithms and trade-offs?</li>
+          <li><strong>Humility:</strong> Can you acknowledge mistakes and improve?</li>
+          <li><strong>Confidence:</strong> Do you project calm and expertise?</li>
+        </ul>
+
+        <p>
+          A candidate who writes messy code but explains it brilliantly beats a candidate 
+          who writes perfect code silently.
+        </p>
+
+        <p style="font-size: 18px; margin-top: 30px;">
+          ⚡ <strong>The Real Lesson:</strong>  
+          Interviews are conversations, not coding contests. 
+          Show your thought process, engage with the interviewer, and solve problems methodically. 
+          That's how you win.
+        </p>
+
+        <p style="font-size: 18px; margin-top: 20px;">
+          💪 <strong>Go crush that interview.</strong>
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../longest-word/index.html">
+          ← Previous: Longest Word in a Sentence
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../next-blog/index.html">
+          Next: Coming Soon →
+        </a>
+      </nav>
+    </article>
+
+    <script src="theme.js"></script>
+  </body>
+</html>

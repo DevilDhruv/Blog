@@ -1,245 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+
     <!-- Primary Meta Tags -->
     <title>Dhruv Rastogi — Engineering Notes & Technical Blog</title>
-    <meta name="title" content="Dhruv Rastogi — Engineering Notes & Technical Blog">
-    <meta name="description" content="Engineering notes by Dhruv Rastogi on data structures, JavaScript, systems, internships, and learning software engineering in depth.">
-    <meta name="author" content="Dhruv Rastogi">
-    
+    <meta
+      name="title"
+      content="Dhruv Rastogi — Engineering Notes & Technical Blog"
+    />
+    <meta
+      name="description"
+      content="Engineering notes by Dhruv Rastogi on data structures, JavaScript, systems, internships, and learning software engineering in depth."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://devildhruv.github.io/Blog/">
-    <meta property="og:title" content="Dhruv Rastogi — Engineering Blog">
-    <meta property="og:description" content="Engineering notes on data structures, JavaScript, systems, internships, and practical software development.">
-    <meta property="og:image" content="https://devildhruv.github.io/Blog/og-image.jpg">
-    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://devildhruv.github.io/Blog/" />
+    <meta property="og:title" content="Dhruv Rastogi — Engineering Blog" />
+    <meta
+      property="og:description"
+      content="Engineering notes on data structures, JavaScript, systems, internships, and practical software development."
+    />
+    <meta
+      property="og:image"
+      content="https://devildhruv.github.io/Blog/og-image.jpg"
+    />
+
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://devildhruv.github.io/Blog/">
-    <meta property="twitter:title" content="Dhruv Rastogi — Engineering Blog">
-    <meta property="twitter:description" content="Engineering notes on DSA, JavaScript, systems, and learning software engineering from first principles.">
-    <meta property="twitter:image" content="https://devildhruv.github.io/Blog/og-image.jpg">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://devildhruv.github.io/Blog/" />
+    <meta property="twitter:title" content="Dhruv Rastogi — Engineering Blog" />
+    <meta
+      property="twitter:description"
+      content="Engineering notes on DSA, JavaScript, systems, and learning software engineering from first principles."
+    />
+    <meta
+      property="twitter:image"
+      content="https://devildhruv.github.io/Blog/og-image.jpg"
+    />
 
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="theme-toggle">
-  <button class="theme-btn" data-theme="light" aria-label="Light theme">☀️</button>
-  <button class="theme-btn" data-theme="dark" aria-label="Dark theme">🌙</button>
-  <button class="theme-btn" data-theme="bookish" aria-label="Bookish theme">📖</button>
-</div>
+      <button class="theme-btn" data-theme="light" aria-label="Light theme">
+        ☀️
+      </button>
+      <button class="theme-btn" data-theme="dark" aria-label="Dark theme">
+        🌙
+      </button>
+      <button class="theme-btn" data-theme="bookish" aria-label="Bookish theme">
+        📖
+      </button>
+    </div>
 
-<a href="./animate.html" class="format-toggle" aria-label="Switch to animated layout">
-  Explore →
-</a>
-
+    <a
+      href="./animate.html"
+      class="format-toggle"
+      aria-label="Switch to animated layout"
+    >
+      Explore →
+    </a>
 
     <!-- Hero Section -->
     <section class="hero fade-in">
-        <div class="container">
-            <h1 class="hero-name">Dhruv Rastogi</h1>
-            <p class="hero-description">
-                I write about data structures, JavaScript, systems, internships, and learning software engineering from first principles.
-            </p>
-            <p class="hero-philosophy">
-                Building in public. Learning by explaining. Improving one concept at a time.
-            </p>
-            <a href="#latest-posts" class="cta-button">Read Blogs</a>
-        </div>
+      <div class="container">
+        <h1 class="hero-name">Dhruv Rastogi</h1>
+        <p class="hero-description">
+          I write about data structures, JavaScript, systems, internships, and
+          learning software engineering from first principles.
+        </p>
+        <p class="hero-philosophy">
+          Building in public. Learning by explaining. Improving one concept at a
+          time.
+        </p>
+        <a href="#latest-posts" class="cta-button">Read Blogs</a>
+      </div>
     </section>
 
     <!-- Blog Categories Section -->
     <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Topics</h2>
-            <div class="category-grid">
-                <a href="./content/index.html?tag=dsa" class="category-card">
-                    <div class="category-icon">DS</div>
-                    <h3 class="category-title">Data Structures</h3>
-                    <p class="category-description">
-                        Core data structures, algorithms, patterns, and problem-solving approaches.
-                    </p>
-                </a>
-                
-                <a href="./content/index.html?tag=javascript" class="category-card">
-                    <div class="category-icon">JS</div>
-                    <h3 class="category-title">JavaScript</h3>
-                    <p class="category-description">
-                        JavaScript internals, async patterns, and practical usage.
-                    </p>
-                </a>
-                
-                <a href="./content/index.html?tag=systems" class="category-card">
-                    <div class="category-icon">SYS</div>
-                    <h3 class="category-title">Systems & Internships</h3>
-                    <p class="category-description">
-                        Backend fundamentals, system design basics, and internship learnings.
-                    </p>
-                </a>
-                
-                <a href="./content/index.html?tag=notes" class="category-card">
-                    <div class="category-icon">NT</div>
-                    <h3 class="category-title">Notes & Essays</h3>
-                    <p class="category-description">
-                        Reflections on learning, building, and growing as an engineer.
-                    </p>
-                </a>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Topics</h2>
+        <div class="category-grid">
+          <a href="./content/index.html?tag=dsa" class="category-card">
+            <div class="category-icon">DS</div>
+            <h3 class="category-title">Data Structures</h3>
+            <p class="category-description">
+              Core data structures, algorithms, patterns, and problem-solving
+              approaches.
+            </p>
+          </a>
+
+          <a href="./content/index.html?tag=dsa" class="category-card">
+            <div class="category-icon">I</div>
+            <h3 class="category-title">Interview Preparation</h3>
+            <p class="category-description">
+              LeetCode, system design, and behavioral interview prep.
+            </p>
+          </a>
+
+          <a href="./content/index.html?tag=javascript" class="category-card">
+            <div class="category-icon">JS</div>
+            <h3 class="category-title">JavaScript</h3>
+            <p class="category-description">
+              JavaScript internals, async patterns, and practical usage.
+            </p>
+          </a>
+
+          <a href="./content/index.html?tag=systems" class="category-card">
+            <div class="category-icon">SYS</div>
+            <h3 class="category-title">Systems & Internships</h3>
+            <p class="category-description">
+              Backend fundamentals, system design basics, and internship
+              learnings.
+            </p>
+          </a>
+
+          <a href="./content/index.html?tag=notes" class="category-card">
+            <div class="category-icon">NT</div>
+            <h3 class="category-title">Notes & Essays</h3>
+            <p class="category-description">
+              Reflections on learning, building, and growing as an engineer.
+            </p>
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- Latest Posts Section -->
     <section id="latest-posts" class="latest-posts">
-        <div class="container">
-            <h2 class="section-title">Latest Posts</h2>
-            <div class="posts-list">
+      <div class="container">
+        <h2 class="section-title">Latest Posts</h2>
+        <div class="posts-list">
+          <article class="post-card">
+            <span class="post-tag">Interview</span>
+            <h3 class="post-title">
+              <a href="./Learn/rotate-array/index.html">
+                Rotate Array in C++ | Interview Based
+              </a>
+            </h3>
+            <p class="post-excerpt">
+              Complete interview guide to solving Rotate Array in C++. Master
+              problem clarification, 4 optimal approaches, edge cases, testing
+              strategy, and follow-up questions like a top candidate.
+            </p>
+            <time class="post-date">Jan 2026</time>
+          </article>
 
-                <article class="post-card">
-                    <span class="post-tag">Data Structures</span>
-                    <h3 class="post-title">
-                        <a href="./Learn/reverse-string/index.html">
-                            Reversing a String in JavaScript
-                        </a>
-                    </h3>
-                    <p class="post-excerpt">
-                        Multiple approaches to reverse a string in JavaScript, with edge cases and time complexity analysis.
-                    </p>
-                    <time class="post-date">Dec 2025</time>
-                </article>
+          <article class="post-card">
+            <span class="post-tag">Data Structures</span>
+            <h3 class="post-title">
+              <a href="./Learn/reverse-string/index.html">
+                Reversing a String in JavaScript
+              </a>
+            </h3>
+            <p class="post-excerpt">
+              Multiple approaches to reverse a string in JavaScript, with edge
+              cases and time complexity analysis.
+            </p>
+            <time class="post-date">Dec 2025</time>
+          </article>
 
-                <article class="post-card">
-                    <span class="post-tag">Data Structures</span>
-                    <h3 class="post-title">
-                        <a href="./Learn/implement-array/index.html">
-                            Designing an Array from Scratch in JavaScript
-                        </a>
-                    </h3>
-                    <p class="post-excerpt">
-                        Understanding how arrays work internally by building one step by step.
-                    </p>
-                    <time class="post-date">Dec 2025</time>
-                </article>
-                
-                <article class="post-card">
-                    <span class="post-tag">JavaScript</span>
-                    <h3 class="post-title">
-                        <a href="#">
-                            Closures, Scope, and the JavaScript Execution Model
-                        </a>
-                    </h3>
-                    <p class="post-excerpt">
-                        A clear mental model for how closures and scope chains really work.
-                    </p>
-                    <time class="post-date">Coming soon</time>
-                </article>
-                
-                <article class="post-card">
-                    <span class="post-tag">Systems</span>
-                    <h3 class="post-title">
-                        <a href="#">
-                            Internship Notes: Lessons Beyond College
-                        </a>
-                    </h3>
-                    <p class="post-excerpt">
-                        Real-world engineering lessons from internships and production systems.
-                    </p>
-                    <time class="post-date">Coming soon</time>
-                </article>
-                
-                <article class="post-card">
-                    <span class="post-tag">Notes</span>
-                    <h3 class="post-title">
-                        <a href="#">
-                            Learning in Public as a Beginner Engineer
-                        </a>
-                    </h3>
-                    <p class="post-excerpt">
-                        Why sharing your learning process accelerates growth.
-                    </p>
-                    <time class="post-date">Coming soon</time>
-                </article>
+          <article class="post-card">
+            <span class="post-tag">Data Structures</span>
+            <h3 class="post-title">
+              <a href="./Learn/implement-array/index.html">
+                Designing an Array from Scratch in JavaScript
+              </a>
+            </h3>
+            <p class="post-excerpt">
+              Understanding how arrays work internally by building one step by
+              step.
+            </p>
+            <time class="post-date">Dec 2025</time>
+          </article>
 
-            </div>
+          <article class="post-card">
+            <span class="post-tag">JavaScript</span>
+            <h3 class="post-title">
+              <a href="#">
+                Closures, Scope, and the JavaScript Execution Model
+              </a>
+            </h3>
+            <p class="post-excerpt">
+              A clear mental model for how closures and scope chains really
+              work.
+            </p>
+            <time class="post-date">Coming soon</time>
+          </article>
+
+          <article class="post-card">
+            <span class="post-tag">Systems</span>
+            <h3 class="post-title">
+              <a href="#"> Internship Notes: Lessons Beyond College </a>
+            </h3>
+            <p class="post-excerpt">
+              Real-world engineering lessons from internships and production
+              systems.
+            </p>
+            <time class="post-date">Coming soon</time>
+          </article>
+
+          <article class="post-card">
+            <span class="post-tag">Notes</span>
+            <h3 class="post-title">
+              <a href="#"> Learning in Public as a Beginner Engineer </a>
+            </h3>
+            <p class="post-excerpt">
+              Why sharing your learning process accelerates growth.
+            </p>
+            <time class="post-date">Coming soon</time>
+          </article>
         </div>
+      </div>
     </section>
 
     <!-- Subscribe Section -->
     <section class="subscribe">
-        <div class="container">
-            <h2 class="section-title">Stay Updated</h2>
-            <p class="subscribe-description">
-                Get notified when I publish something worth sharing.
-            </p>
-            
-            <form id="subscribe-form" class="subscribe-form">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        class="form-input" 
-                        placeholder="you@example.com" 
-                        required
-                        aria-label="Email address"
-                    >
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Topics of Interest</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="topics" value="DSA" checked>
-                            <span>Data Structures & Algorithms</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="topics" value="JavaScript" checked>
-                            <span>JavaScript</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="topics" value="Career" checked>
-                            <span>Career & Internships</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="topics" value="Notes" checked>
-                            <span>Notes & Essays</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <button type="submit" class="submit-button">Subscribe</button>
-                <p class="form-message" id="form-message"></p>
-            </form>
-        </div>
+      <div class="container">
+        <h2 class="section-title">Stay Updated</h2>
+        <p class="subscribe-description">
+          Get notified when I publish something worth sharing.
+        </p>
+
+        <form id="subscribe-form" class="subscribe-form">
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="you@example.com"
+              required
+              aria-label="Email address"
+            />
+            <input
+              type="text"
+              name="company"
+              tabindex="-1"
+              autocomplete="off"
+              class="honeypot"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Topics of Interest</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="topics" value="DSA" checked />
+                <span>Data Structures & Algorithms</span>
+              </label>
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="topics"
+                  value="Interview"
+                  checked
+                />
+                <span>Interview Preparation</span>
+              </label>
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="topics"
+                  value="JavaScript"
+                  checked
+                />
+                <span>JavaScript</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="topics" value="Career" checked />
+                <span>Career & Internships</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="topics" value="Notes" checked />
+                <span>Notes & Essays</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-button">Subscribe</button>
+          <p class="form-message" id="form-message"></p>
+        </form>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://github.com/DevilDhruv" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <!-- GitHub SVG unchanged -->
-                    </a>
-                    <a href="https://www.linkedin.com/in/dhruv-rastogi-/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <!-- LinkedIn SVG unchanged -->
-                    </a>
-                    <a href="https://leetcode.com/DevilDhruv" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
-                        <!-- LeetCode SVG unchanged -->
-                    </a>
-                </div>
-                <div class="footer-text">
-                    <p>&copy; 2025 Dhruv Rastogi. Built with curiosity.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="social-links">
+            <a
+              href="https://github.com/DevilDhruv"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <!-- GitHub SVG unchanged -->
+            </a>
+            <a
+              href="https://www.linkedin.com/in/dhruv-rastogi01/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <!-- LinkedIn SVG unchanged -->
+            </a>
+            <a
+              href="https://leetcode.com/DevilDhruv"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LeetCode"
+            >
+              <!-- LeetCode SVG unchanged -->
+            </a>
+          </div>
+          <div class="footer-text">
+            <p>&copy; 2025 Dhruv Rastogi. Built with curiosity.</p>
+          </div>
         </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+    <script src="google-sheets.js"></script>
+  </body>
 </html>
