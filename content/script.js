@@ -47,6 +47,15 @@ const blogs = [
     date: "2026-01-02",
     tags: ["c++", "arrays", "dsa", "interview", "star"],
     url: "../Learn/rotate-array/index.html",
+  },
+  {
+    id: 6,
+    title: "Contains Duplicate in C++",
+    description:
+      "Learn how to check for duplicates in an array using C++. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-04",
+    tags: ["c++", "arrays", "hashing", "dsa"],
+    url: "../Learn/contains-duplicate/index.html",
   }
 ];
 

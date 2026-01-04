@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contains Duplicate in C++ | Interview Masterclass | DevilDhruv</title>
+
+    <!-- SEO Meta -->
+    <meta
+      name="description"
+      content="Master the Contains Duplicate problem in C++. Learn brute force, hash set, sorting approaches with interview-ready explanations and trade-offs."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="contains duplicate c++, leetcode contains duplicate, hash set interview, array duplicates problem, dsa interview blog"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contains Duplicate in C++ — Interview Masterclass" />
+    <meta
+      property="og:description"
+      content="A deep interview-oriented breakdown of the Contains Duplicate problem with multiple approaches and decision-making insights."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/contains-duplicate/index.html"
+    />
+
+    <!-- Prism -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Arrays · C++ · Interview Fundamentals
+        </p>
+
+        <h1 class="intro-div-header">
+          Contains Duplicate in C++ — An Interview Thinking Guide
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          This problem looks deceptively easy. But how you approach it,
+          explain it, and optimize it reveals a lot about how you think as
+          an engineer in interviews.
+        </p>
+      </div>
+
+      <!-- Problem -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          Given an integer array <code>nums</code>, return
+          <strong>true</strong> if any value appears at least twice in the
+          array, and return <strong>false</strong> if every element is
+          distinct.
+        </p>
+
+        <p>
+          This is often one of the first array questions asked in interviews
+          — not because it’s hard, but because it reveals how you reason.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Interview Mindset -->
+      <div class="blog-section">
+        <h2>🧠 Interview Mindset Before Coding</h2>
+
+        <ul>
+          <li>What are the input constraints?</li>
+          <li>Is modifying the array allowed?</li>
+          <li>Do we prioritize time or space?</li>
+          <li>Can duplicates appear early?</li>
+        </ul>
+
+        <p>
+          A strong candidate always starts with a simple solution,
+          explains why it’s not optimal, and then improves it.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 1 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Approach 1: Brute Force (Nested Loops)</h2>
+
+        <p>
+          This is the most natural solution and a perfectly acceptable
+          starting point in interviews.
+        </p>
+
+        <pre><code class="language-cpp">
+bool containsDuplicate(vector&lt;int&gt;& nums) {
+    int n = nums.size();
+    for(int i = 0; i &lt; n; i++) {
+        for(int j = i + 1; j &lt; n; j++) {
+            if(nums[i] == nums[j]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+        </code></pre>
+
+        <p><strong>Time:</strong> O(n²)</p>
+        <p><strong>Space:</strong> O(1)</p>
+
+        <p>
+          This works, but quickly becomes inefficient for large inputs.
+          This is where you tell the interviewer:
+        </p>
+
+        <blockquote>
+          “This works, but we’re repeating comparisons unnecessarily.”
+        </blockquote>
+      </div>
+
+      <hr />
+
+      <!-- Approach 2 -->
+      <div class="blog-section walkthrough-section">
+        <h2>⚡ Approach 2: Hash Set (Optimal)</h2>
+
+        <p>
+          Using a hash set allows us to track elements we’ve already seen.
+        </p>
+
+        <pre><code class="language-cpp">
+bool containsDuplicate(vector&lt;int&gt;& nums) {
+    unordered_set&lt;int&gt; st;
+    for(int x : nums) {
+        if(st.find(x) != st.end()) {
+            return true;
+        }
+        st.insert(x);
+    }
+    return false;
+}
+        </code></pre>
+
+        <p><strong>Time:</strong> O(n)</p>
+        <p><strong>Space:</strong> O(n)</p>
+
+        <p>
+          This is usually the <strong>expected interview answer</strong>.
+          Fast, readable, and safe.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 3 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🧪 Approach 3: Hash Set from Constructor</h2>
+
+        <p>
+          A concise version using STL features.
+        </p>
+
+        <pre><code class="language-cpp">
+bool containsDuplicate(vector&lt;int&gt;& nums) {
+    unordered_set&lt;int&gt; st(nums.begin(), nums.end());
+    return st.size() != nums.size();
+}
+        </code></pre>
+
+        <p>
+          Elegant, but in interviews, clarity is usually preferred over
+          cleverness.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 4 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🔄 Approach 4: Sorting First</h2>
+
+        <p>
+          If modifying the input is allowed, sorting groups duplicates
+          together.
+        </p>
+
+        <pre><code class="language-cpp">
+bool containsDuplicate(vector&lt;int&gt;& nums) {
+    sort(nums.begin(), nums.end());
+    for(int i = 0; i &lt; nums.size() - 1; i++) {
+        if(nums[i] == nums[i + 1]) {
+            return true;
+        }
+    }
+    return false;
+}
+        </code></pre>
+
+        <p><strong>Time:</strong> O(n log n)</p>
+        <p><strong>Space:</strong> O(1)</p>
+
+        <p>
+          This is a great backup solution if hashing is restricted.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Final Thoughts -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Final Interview Takeaways</h2>
+
+        <ul>
+          <li>Always start with brute force</li>
+          <li>Explain bottlenecks clearly</li>
+          <li>Optimize step by step</li>
+          <li>Justify trade-offs confidently</li>
+        </ul>
+
+        <p>
+          Interviewers care less about the final code and more about how
+          you arrived there.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../merge-sorted/index.html">
+          ← Previous: Merge Two Sorted Arrays
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../../coming-soon.html">
+          Next: Coming Soon → 
+        </a>
+      </nav>
+    </article>
+
+    <script src="theme.js"></script>
+  </body>
+</html>
