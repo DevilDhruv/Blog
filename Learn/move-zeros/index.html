@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Move Zeroes in C++ | Interview Guide | DevilDhruv</title>
+
+    <!-- SEO Meta -->
+    <meta
+      name="description"
+      content="Learn how to solve the Move Zeroes problem in C++ with interview-ready explanations. Covers brute force and optimal in-place approaches."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="move zeroes c++, leetcode move zeroes, two pointer technique, array interview questions"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Move Zeroes in C++ — Interview Thinking Guide" />
+    <meta
+      property="og:description"
+      content="A clean, interview-focused explanation of Move Zeroes using brute force and optimal in-place approaches."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/move-zeroes/index.html"
+    />
+
+    <!-- Prism -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Arrays · C++ · Two Pointer Technique
+        </p>
+
+        <h1 class="intro-div-header">
+          Move Zeroes in C++ — How Interviewers Expect You to Think
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          This problem is not about moving zeroes.
+          It’s about whether you can manipulate arrays efficiently
+          <strong>without breaking order</strong> and
+          <strong>without extra space</strong>.
+        </p>
+      </div>
+
+      <!-- Problem -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          Given an integer array <code>nums</code>, move all <strong>0’s</strong>
+          to the end of the array while maintaining the relative order of the
+          non-zero elements.
+        </p>
+
+        <p>
+          You must do this <strong>in-place</strong> without making a copy of
+          the array.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Interview Mindset -->
+      <div class="blog-section">
+        <h2>🧠 Interview Thought Process</h2>
+
+        <p>
+          Before touching the keyboard, a good candidate asks:
+        </p>
+
+        <ul>
+          <li>Is extra space allowed?</li>
+          <li>Do we need to preserve order?</li>
+          <li>Can we overwrite elements safely?</li>
+        </ul>
+
+        <p>
+          Interviewers often expect you to start with a simple solution,
+          then optimize.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 1 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Approach 1: Extra Array (Brute Force)</h2>
+
+        <p>
+          The simplest way is to create a new array,
+          place non-zero elements first,
+          and let the rest be zeros.
+        </p>
+
+        <pre><code class="language-cpp">
+void moveZeroes(vector&lt;int&gt;& nums) {
+    int n = nums.size();
+    vector&lt;int&gt; temp(n, 0);
+    int j = 0;
+
+    for(int i = 0; i &lt; n; i++) {
+        if(nums[i] != 0) {
+            temp[j++] = nums[i];
+        }
+    }
+
+    nums = temp;
+}
+        </code></pre>
+
+        <p><strong>Time:</strong> O(n)</p>
+        <p><strong>Space:</strong> O(n)</p>
+
+        <p>
+          This works, but violates the
+          <strong>in-place</strong> requirement.
+          In interviews, this solution is acceptable only as a starting point.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 2 -->
+      <div class="blog-section walkthrough-section">
+        <h2>⚡ Approach 2: Two Pointer (Optimal)</h2>
+
+        <p>
+          We use a pointer <code>j</code> to track where the next non-zero
+          element should go.
+        </p>
+
+        <pre><code class="language-cpp">
+void moveZeroes(vector&lt;int&gt;& nums) {
+    int n = nums.size();
+    int j = 0;
+
+    for(int i = 0; i &lt; n; i++) {
+        if(nums[i] != 0) {
+            nums[j++] = nums[i];
+        }
+    }
+
+    for(int i = j; i &lt; n; i++) {
+        nums[i] = 0;
+    }
+}
+        </code></pre>
+
+        <p><strong>Time:</strong> O(n)</p>
+        <p><strong>Space:</strong> O(1)</p>
+
+        <p>
+          This is the solution interviewers are looking for.
+          It’s clean, efficient, and preserves order.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Why This Works -->
+      <div class="blog-section">
+        <h2>🔍 Why This Approach Works</h2>
+
+        <ul>
+          <li>Non-zero elements are written in correct order</li>
+          <li>Overwriting is safe because <code>j ≤ i</code></li>
+          <li>Zero fill happens only once</li>
+        </ul>
+
+        <p>
+          This pattern appears in many array problems —
+          mastering it saves time in interviews.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Final Takeaways -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Interview Takeaways</h2>
+
+        <ul>
+          <li>Start simple, then optimize</li>
+          <li>Preserving order matters</li>
+          <li>In-place solutions are usually preferred</li>
+          <li>Two pointers are your best friend</li>
+        </ul>
+
+        <p>
+          If you explain this clearly,
+          interviewers usually move to harder variations.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../contains-duplicate/index.html">
+          ← Previous: Contains Duplicate
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../../coming-soon.html">
+          Next: Coming Soon →
+        </a>
+      </nav>
+    </article>
+
+    <script src="../theme.js"></script>
+  </body>
+</html>

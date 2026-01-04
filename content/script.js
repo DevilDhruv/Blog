@@ -56,6 +56,15 @@ const blogs = [
     date: "2026-01-04",
     tags: ["c++", "arrays", "hashing", "dsa"],
     url: "../Learn/contains-duplicate/index.html",
+  },
+  {
+    id: 7,
+    title: "Move Zeroes in C++",
+    description:
+      "Learn how to move zeroes to the end of an array using C++. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-04",
+    tags: ["c++", "arrays", "two-pointers", "dsa"],
+    url: "../Learn/move-zeros/index.html",
   }
 ];
 
