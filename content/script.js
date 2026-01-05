@@ -65,6 +65,15 @@ const blogs = [
     date: "2026-01-04",
     tags: ["c++", "arrays", "two-pointers", "dsa"],
     url: "../Learn/move-zeros/index.html",
+  },
+  {
+    id: 8,
+    title: "Maximum Subarray in C++ (Kadane’s Algorithm)",
+    description: 
+      "Learn how to solve the Maximum Subarray problem in C++ using Kadane’s Algorithm. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-05",
+    tags: ["c++", "arrays", "dsa", "kadane"],
+    url: "../Learn/maximum-subarray/index.html",
   }
 ];
 
