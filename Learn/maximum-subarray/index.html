@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <title>Maximum Subarray in C++ (Kadane’s Algorithm Explained) | DevilDhruv</title>
+
+    <meta
+      name="description"
+      content="Learn how to solve the Maximum Subarray problem in C++ by thinking like an interviewer. From brute force to Kadane’s Algorithm with clear intuition."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="maximum subarray, kadane algorithm, c++ dsa, interview preparation, array problems"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Maximum Subarray in C++ – Interview Masterclass" />
+    <meta
+      property="og:description"
+      content="A complete interview-style breakdown of the Maximum Subarray problem with brute force, optimization, and Kadane’s Algorithm."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/maximum-subarray/index.html"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Arrays · C++ · Interview Essential
+        </p>
+
+        <h1 class="intro-div-header">
+          Maximum Subarray in C++ — From Brute Force to Kadane’s Algorithm
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          This problem looks simple at first — until the interviewer asks you
+          to optimize it. In this blog, we’ll solve the Maximum Subarray problem
+          exactly how you should in an interview: starting naive, improving
+          step by step, and finally arriving at Kadane’s Algorithm.
+        </p>
+      </div>
+
+      <!-- Problem -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          You are given an integer array <code>nums</code>. Find the contiguous
+          subarray (containing at least one number) which has the largest sum
+          and return its sum.
+        </p>
+
+        <pre><code class="language-cpp">
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6
+        </code></pre>
+      </div>
+
+      <hr />
+
+      <!-- Interview Thinking -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 Interview Thought Process</h2>
+
+        <p>
+          Before writing code, pause and think like an interviewer wants you to:
+        </p>
+
+        <ul>
+          <li>What defines a valid subarray?</li>
+          <li>Can negative numbers reduce the sum?</li>
+          <li>Is recomputing sums repeatedly necessary?</li>
+          <li>Where is the bottleneck?</li>
+        </ul>
+
+        <p>
+          We’ll now explore solutions in increasing order of efficiency — just
+          like a real interview.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 1 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Approach 1: Brute Force (O(N³))</h2>
+
+        <p>
+          The most straightforward idea is to try every possible subarray and
+          calculate its sum.
+        </p>
+
+        <pre><code class="language-cpp">
+int maxSubArray(vector<int>& nums) {
+    int n = nums.size();
+    int ans = INT_MIN;
+
+    for(int start = 0; start < n; start++) {
+        for(int end = start; end < n; end++) {
+            int sum = 0;
+            for(int i = start; i <= end; i++) {
+                sum += nums[i];
+            }
+            ans = max(ans, sum);
+        }
+    }
+    return ans;
+}
+        </code></pre>
+
+        <p>
+          ❌ This approach works but is extremely slow. We repeatedly recompute
+          sums, leading to cubic time complexity.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 2 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Approach 2: Optimized Brute Force (O(N²))</h2>
+
+        <p>
+          We can avoid recomputing sums by carrying a running sum for each
+          starting index.
+        </p>
+
+        <pre><code class="language-cpp">
+int maxSubArray(vector<int>& nums) {
+    int n = nums.size();
+    int ans = INT_MIN;
+
+    for(int start = 0; start < n; start++) {
+        int sum = 0;
+        for(int i = start; i < n; i++) {
+            sum += nums[i];
+            ans = max(ans, sum);
+        }
+    }
+    return ans;
+}
+        </code></pre>
+
+        <p>
+          ✅ Much better — but still too slow for large inputs.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Kadane -->
+      <div class="blog-section walkthrough-section">
+        <h2>🚀 Approach 3: Kadane’s Algorithm (O(N))</h2>
+
+        <p>
+          Kadane’s Algorithm is based on a powerful observation:
+        </p>
+
+        <blockquote>
+          If a running sum becomes negative, it will only hurt future sums.
+          Reset it.
+        </blockquote>
+
+        <pre><code class="language-cpp">
+int maxSubArray(vector<int>& nums) {
+    int ans = INT_MIN;
+    int current = 0;
+
+    for(int x : nums) {
+        current += x;
+        ans = max(ans, current);
+        if(current < 0) {
+            current = 0;
+        }
+    }
+    return ans;
+}
+        </code></pre>
+
+        <p>
+          ✅ Linear time  
+          ✅ Constant space  
+          ✅ Interview favorite
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Common Mistakes -->
+      <div class="blog-section">
+        <h2>⚠️ Common Mistakes</h2>
+
+        <ul>
+          <li>Resetting current sum too early</li>
+          <li>Not handling all-negative arrays</li>
+          <li>Confusing subarray with subsequence</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- Bonus -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Bonus Interview Questions</h2>
+
+        <ul>
+          <li>Return the actual subarray, not just the sum</li>
+          <li>What if the array is circular?</li>
+          <li>How would you solve this using Divide & Conquer?</li>
+          <li>How does Kadane change for 2D arrays?</li>
+        </ul>
+      </div>
+
+      <div>
+        <p style="margin-top: 60px; font-size: 18px">
+          ⚡ <strong>Final Note:</strong>  
+          Kadane’s Algorithm isn’t about memorization — it’s about understanding
+          when to drop unnecessary work. That mindset is what interviews really
+          test.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../move-zeros/index.html">
+          ← Previous: Move Zeroes
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../../coming-soon.html">
+          Next: Coming Soon →
+        </a>
+      </nav>
+    </article>
+
+    <script src="../theme.js"></script>
+  </body>
+</html>
