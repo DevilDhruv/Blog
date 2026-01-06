@@ -74,6 +74,15 @@ const blogs = [
     date: "2026-01-05",
     tags: ["c++", "arrays", "dsa", "kadane"],
     url: "../Learn/maximum-subarray/index.html",
+  },
+  {
+    id: 9,
+    title: "Two Sum Problem in C++",
+    description:
+      "Learn how to solve the Two Sum problem in C++. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-06",
+    tags: ["c++", "arrays", "hashing", "dsa"],
+    url: "../Learn/two-sum/index.html",
   }
 ];
 
