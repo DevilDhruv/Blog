@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <title>Implement a Hash Table from Scratch in JavaScript | DevilDhruv</title>
+
+    <meta
+      name="description"
+      content="Learn how hash tables work internally by implementing one from scratch in JavaScript. Hashing, collisions, chaining, and interview insights explained."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="hash table javascript, hashmap from scratch, data structures js, hashing, interview preparation"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Implement a Hash Table from Scratch in JavaScript"
+    />
+    <meta
+      property="og:description"
+      content="A deep, interview-oriented explanation of hash tables by building one from scratch in JavaScript."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/hash-table-from-scratch/index.html"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Hash Tables · JavaScript · Core Data Structures
+        </p>
+
+        <h1 class="intro-div-header">
+          Implement a Hash Table from Scratch in JavaScript
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          Hash tables power objects, maps, databases, caches, and almost every
+          high-performance system. Instead of memorizing APIs, let’s build one
+          from scratch and understand what actually happens under the hood.
+        </p>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="blog-section problem-section">
+        <h2>📌 Why Build a Hash Table?</h2>
+
+        <p>
+          JavaScript gives us <code>Map</code> and objects out of the box. But in
+          interviews, you’re often evaluated on whether you understand *how*
+          these structures work internally.
+        </p>
+
+        <p>
+          The goal is to design a hash table that supports:
+        </p>
+
+        <ul>
+          <li>Insert key-value pairs</li>
+          <li>Retrieve values by key</li>
+          <li>Handle collisions safely</li>
+          <li>Return all stored keys</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- Core Idea -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 Core Idea Behind Hash Tables</h2>
+
+        <p>
+          A hash table uses a <strong>hash function</strong> to convert keys into
+          array indices.
+        </p>
+
+        <ul>
+          <li>Keys are transformed into numbers (hashing)</li>
+          <li>Those numbers map to array indices</li>
+          <li>Multiple keys may map to the same index (collision)</li>
+        </ul>
+
+        <p>
+          To handle collisions, we use <strong>separate chaining</strong> —
+          storing multiple key-value pairs at the same index.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Walkthrough -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Step-by-Step Implementation</h2>
+
+        <h3>1️⃣ Constructor</h3>
+
+        <p>
+          We initialize a fixed-size array. Each index acts as a bucket.
+        </p>
+
+        <pre><code class="language-js">
+class HashMap {
+  constructor(size) {
+    this.data = new Array(size);
+  }
+}
+        </code></pre>
+
+        <h3>2️⃣ Hash Function</h3>
+
+        <p>
+          The hash function converts a string key into a valid array index.
+        </p>
+
+        <pre><code class="language-js">
+_hash(key) {
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) {
+    hash = (hash + key.charCodeAt(i) * i) % this.data.length;
+  }
+  return hash;
+}
+        </code></pre>
+
+        <p>
+          This ensures the index always stays within array bounds.
+        </p>
+
+        <h3>3️⃣ Setting Values (Handling Collisions)</h3>
+
+        <pre><code class="language-js">
+set(key, value) {
+  let address = this._hash(key);
+  if (!this.data[address]) {
+    this.data[address] = [];
+  }
+  this.data[address].push([key, value]);
+}
+        </code></pre>
+
+        <p>
+          If multiple keys map to the same index, we store them in a list —
+          preventing data loss.
+        </p>
+
+        <h3>4️⃣ Getting Values</h3>
+
+        <pre><code class="language-js">
+get(key) {
+  let address = this._hash(key);
+  if (!this.data[address]) {
+    return undefined;
+  }
+  for (let i = 0; i < this.data[address].length; i++) {
+    if (this.data[address][i][0] === key) {
+      return this.data[address][i][1];
+    }
+  }
+}
+        </code></pre>
+
+        <h3>5️⃣ Retrieving All Keys</h3>
+
+        <pre><code class="language-js">
+keys() {
+  let keysArray = [];
+  for (let i = 0; i < this.data.length; i++) {
+    if (this.data[i]) {
+      for (let j = 0; j < this.data[i].length; j++) {
+        keysArray.push(this.data[i][j][0]);
+      }
+    }
+  }
+  return keysArray;
+}
+        </code></pre>
+      </div>
+
+      <hr />
+
+      <!-- Example -->
+      <div class="blog-section output-section">
+        <h2>📤 Example Usage</h2>
+
+        <pre><code class="language-js">
+const map = new HashMap(2);
+map.set("grapes", 1000);
+map.set("oranges", 12);
+map.set("hello", 3000);
+
+console.log(map.keys());
+        </code></pre>
+
+        <p>
+          Even with a very small array size, collisions are handled correctly.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Interview Notes -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Interview Insights</h2>
+
+        <ul>
+          <li>Time Complexity (average): O(1)</li>
+          <li>Worst-case time: O(n) due to collisions</li>
+          <li>Load factor impacts performance</li>
+          <li>Real hash tables resize dynamically</li>
+        </ul>
+
+        <p>
+          In interviews, always mention collision handling and trade-offs — it
+          shows depth of understanding.
+        </p>
+      </div>
+
+      <div>
+        <p style="margin-top: 60px; font-size: 18px">
+          ⚡ <strong>Final Thought:</strong>  
+          Hash tables aren’t magic. They’re just arrays, math, and discipline.
+          Once you understand that, a huge part of system design starts making
+          sense.
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../two-sum/index.html">
+          ← Previous: Two Sum
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../first-recurring-character/index.html">
+          Next: First Recurring Character →
+        </a>
+      </nav>
+    </article>
+
+    <script src="../theme.js"></script>
+  </body>
+</html>

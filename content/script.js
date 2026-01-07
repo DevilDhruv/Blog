@@ -74,8 +74,7 @@ const blogs = [
     date: "2026-01-05",
     tags: ["c++", "arrays", "dsa", "kadane"],
     url: "../Learn/maximum-subarray/index.html",
-  },
-  
+  }, 
   {
     id: 9,
     title: "Two Sum Problem in C++",
@@ -84,6 +83,15 @@ const blogs = [
     date: "2026-01-06",
     tags: ["c++", "arrays", "hashing", "dsa"],
     url: "../Learn/two-sum/index.html",
+  },
+  {
+    id: 10,
+    title: "Implement Hash Table from Scratch In Javascript",
+    description:
+      "Understand how hash tables work internally by building your own hash table with set, get, and delete operations.",
+    date: "2026-01-07",
+    tags: ["javascript", "hashing", "dsa", "beginner"],
+    url: "../Learn/implement-hash/index.html",
   }
 ];
 
