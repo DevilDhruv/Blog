@@ -92,6 +92,15 @@ const blogs = [
     date: "2026-01-07",
     tags: ["javascript", "hashing", "dsa", "beginner"],
     url: "../Learn/implement-hash/index.html",
+  },
+  {
+    id: 11,
+    title: "First Recurring Character in an Array in JavaScript",
+    description:
+      "Learn how to find the first recurring character in an array using JavaScript. Step-by-step interview-style explanation with edge cases and clean implementation.",
+    date: "2026-01-08",
+    tags: ["javascript", "arrays", "hashing", "dsa"],
+    url: "../Learn/first-recurring-character/index.html",
   }
 ];
 
