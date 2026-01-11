@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../style.css" />
+
+    <title>First Recurring Character in JavaScript | DevilDhruv</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Learn how to find the first recurring character in an array using JavaScript. Explore brute force, hash map, and set-based approaches with interview-focused explanations."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="first recurring character, javascript hashmap, javascript set, dsa interview question, hashing problems"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="First Recurring Character in JavaScript" />
+    <meta
+      property="og:description"
+      content="An interview-style breakdown of solving the First Recurring Character problem using brute force, Map, and Set in JavaScript."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://devildhruv.github.io/Blog/Learn/first-recurring-character/index.html"
+    />
+
+    <!-- Code Highlighting -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+      <!-- Intro -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Arrays · Hashing · JavaScript · Interview Classic
+        </p>
+
+        <h1 class="intro-div-header">
+          First Recurring Character in JavaScript
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          This problem looks simple on the surface, but it tests how well you
+          understand iteration order, time complexity, and hashing — three
+          things interviewers deeply care about.
+        </p>
+      </div>
+
+      <!-- Problem -->
+      <div class="blog-section problem-section">
+        <h2>📌 Problem Statement</h2>
+
+        <p>
+          Given an array, return the <strong>first element that appears more than once</strong>.
+          If no element repeats, return <code>undefined</code>.
+        </p>
+
+        <pre><code class="language-js">
+Input:  [2, 5, 1, 2, 3, 5, 1, 2, 4]
+Output: 2
+
+Input:  [2, 1, 1, 2, 3, 5]
+Output: 1
+        </code></pre>
+
+        <p>
+          ⚠️ Notice: we are not asked for *any* duplicate — we are asked for the
+          one that repeats <em>first while traversing</em>.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Thought Process -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 Interview Thought Process</h2>
+
+        <p>
+          Before writing code, pause and clarify:
+        </p>
+
+        <ul>
+          <li>Order matters → arrays are sequential</li>
+          <li>We need the <strong>first</strong> repeated element</li>
+          <li>We should aim to reduce repeated comparisons</li>
+        </ul>
+
+        <p>
+          A good interview answer starts with a brute force idea and then
+          improves it.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 1 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Approach 1: Brute Force (Nested Comparison)</h2>
+
+        <p>
+          Compare each element with the elements that come after it.
+          The first match found is the answer.
+        </p>
+
+        <pre><code class="language-js">
+const firstRecurringCharacter1 = (data) => {
+  let n = data.length;
+  let size = 1;
+
+  while (size < n) {
+    for (let i = 0; i < n - size; i++) {
+      if (data[i] === data[i + size]) {
+        return data[i];
+      }
+    }
+    size++;
+  }
+  return undefined;
+};
+        </code></pre>
+
+        <p>
+          ❌ Time Complexity: <strong>O(n²)</strong><br />
+          ❌ Repeated comparisons make this unsuitable for large inputs
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 2 -->
+      <div class="blog-section walkthrough-section">
+        <h2>🚀 Approach 2: Hash Map (Optimal)</h2>
+
+        <p>
+          As we iterate, we store seen elements in a hash map.
+          If an element already exists, we’ve found our answer.
+        </p>
+
+        <pre><code class="language-js">
+const firstRecurringCharacter = (data) => {
+  const map = new Map();
+
+  for (let i = 0; i < data.length; i++) {
+    if (map.has(data[i])) {
+      return data[i];
+    }
+    map.set(data[i], i);
+  }
+  return undefined;
+};
+        </code></pre>
+
+        <p>
+          ✅ Time Complexity: <strong>O(n)</strong><br />
+          ✅ Space Complexity: <strong>O(n)</strong><br />
+          ✅ Interviewer-approved solution
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Approach 3 -->
+      <div class="blog-section walkthrough-section">
+        <h2>✨ Approach 3: Set (Clean & Expressive)</h2>
+
+        <p>
+          Since we only care about existence, a <code>Set</code> is enough.
+        </p>
+
+        <pre><code class="language-js">
+const firstRecurringCharacter2 = (data) => {
+  const set = new Set();
+
+  for (let i = 0; i < data.length; i++) {
+    if (set.has(data[i])) {
+      return data[i];
+    }
+    set.add(data[i]);
+  }
+  return undefined;
+};
+        </code></pre>
+
+        <p>
+          This is often the cleanest and most readable approach.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- Performance -->
+      <div class="blog-section output-section">
+        <h2>⏱ Performance Comparison</h2>
+
+        <p>
+          Measuring execution time highlights how algorithm choice impacts performance —
+          even for small inputs.
+        </p>
+
+        <pre><code class="language-js">
+const printWithTime = (fn, data) => {
+  const t0 = performance.now();
+  console.log(fn(data));
+  const t1 = performance.now();
+  console.log(`Call to ${fn.name} took ${t1 - t0} ms`);
+};
+        </code></pre>
+      </div>
+
+      <hr />
+
+      <!-- Bonus -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Interview Tips</h2>
+
+        <ul>
+          <li>Clarify what “first” means before coding</li>
+          <li>Explain brute force before optimizing</li>
+          <li>Talk about trade-offs (time vs space)</li>
+          <li>Use expressive variable names</li>
+        </ul>
+
+        <p>
+          Bonus follow-up: How would you solve this if the input arrives as a stream?
+        </p>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../implement-hash/index.html">
+          ← Previous: Implement Hash Table
+        </a>
+
+        <a href="../../index.html">Home</a>
+
+        <a class="next" href="../contains-duplicate/index.html">
+          Next: Contains Duplicate →
+        </a>
+      </nav>
+    </article>
+
+    <script src="../theme.js"></script>
+  </body>
+</html>
