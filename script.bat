@@ -4,4 +4,4 @@ git add .
 git commit
 git push -u origin main
 
-clear
+echo "GitHub commit is done!"
