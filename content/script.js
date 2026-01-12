@@ -98,9 +98,18 @@ const blogs = [
     title: "First Recurring Character in an Array in JavaScript",
     description:
       "Learn how to find the first recurring character in an array using JavaScript. Step-by-step interview-style explanation with edge cases and clean implementation.",
-    date: "2026-01-08",
+    date: "2026-01-11",
     tags: ["javascript", "arrays", "hashing", "dsa"],
     url: "../Learn/first-recurring-character/index.html",
+  },
+  {
+    id: 12,
+    title: "Implement Linked List from Scratch in JavaScript",
+    description:
+      "Understand how linked lists work internally by building your own singly linked list with insert, delete, and traversal operations.",
+    date: "2026-01-12",
+    tags: ["javascript", "linkedlist", "dsa", "beginner"],
+    url: "../Learn/implement-linkedlist/index.html",
   }
 ];
 

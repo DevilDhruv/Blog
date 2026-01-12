@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../style.css" />
+
+    <title>Implement Linked List from Scratch in JavaScript | DevilDhruv</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="A complete interview-focused guide to implementing a Linked List from scratch in JavaScript. Learn pointers, operations, trade-offs, and real-world use cases."
+    />
+    <meta name="author" content="Dhruv Rastogi" />
+    <meta
+      name="keywords"
+      content="linked list javascript, data structures interview, linked list vs array, pointers explained, dsa blog"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Implement Linked List from Scratch in JavaScript" />
+    <meta
+      property="og:description"
+      content="Not just code — understand how Linked Lists actually work, how pointers connect nodes, and when interviewers expect you to use them."
+    />
+    <meta property="og:type" content="article" />
+
+    <!-- Prism -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+      <button data-theme="light">Light</button>
+      <button data-theme="bookish">Bookish</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+
+    <!-- Dot TOC -->
+    <nav class="dot-toc" aria-label="Table of contents">
+      <ul id="dot-toc-list"></ul>
+    </nav>
+
+    <article class="article-top">
+
+      <!-- INTRO -->
+      <div class="blog-section intro-section">
+        <p class="intro-div-paragraph-1">
+          Data Structures · JavaScript · Interview Essentials
+        </p>
+
+        <h1 class="intro-div-header">
+          Implement Linked List from Scratch in JavaScript
+        </h1>
+
+        <p class="intro-div-paragraph-2">
+          Arrays feel natural. Linked Lists feel confusing — until you
+          understand <strong>pointers</strong>.  
+          This blog builds that intuition step by step, exactly how interviewers expect.
+        </p>
+      </div>
+
+      <!-- WHY -->
+      <div class="blog-section problem-section">
+        <h2>📌 Why Do We Even Need Linked Lists?</h2>
+
+        <p>
+          Imagine a row of seats in a movie theater.
+          If someone in the middle leaves, everyone after them must shift.
+        </p>
+
+        <p>
+          That’s how arrays work.
+          They are stored in <strong>contiguous memory</strong>,
+          which makes insertion and deletion expensive.
+        </p>
+
+        <p>
+          Linked Lists solve this by storing elements as
+          <strong>independent nodes connected by pointers</strong>.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- POINTERS -->
+      <div class="blog-section core-idea-section">
+        <h2>🧠 What Is a Pointer (in JavaScript terms)?</h2>
+
+        <p>
+          JavaScript doesn’t expose memory addresses directly,
+          but objects behave like pointers.
+        </p>
+
+        <p>
+          Each node stores:
+        </p>
+
+        <ul>
+          <li><code>value</code> → actual data</li>
+          <li><code>next</code> → reference to the next node</li>
+        </ul>
+
+        <p>
+          Think of it like a treasure hunt:
+          each clue tells you where the next clue is.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- VISUAL DIAGRAM -->
+      <div class="blog-section walkthrough-section">
+        <h2>🔗 How a Linked List Looks (Conceptually)</h2>
+
+        <pre>
+[10] → [20] → [30] → null
+ ↑
+head                tail
+        </pre>
+
+        <p>
+          The list doesn’t know where all elements live.
+          It only knows where the <strong>next</strong> one is.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- CLASS DESIGN -->
+      <div class="blog-section walkthrough-section">
+        <h2>🛠 Designing the Linked List</h2>
+
+        <p>
+          We maintain three things:
+        </p>
+
+        <ul>
+          <li><strong>head</strong> → entry point to the list</li>
+          <li><strong>tail</strong> → last node (for fast append)</li>
+          <li><strong>length</strong> → avoids repeated traversal</li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <!-- METHODS EXPLANATION -->
+      <div class="blog-section walkthrough-section">
+        <h2>🧩 Understanding Each Operation</h2>
+
+        <h3>Append (Add at End)</h3>
+        <p>
+          Like adding a new train coach.
+          The tail simply points to the new node.
+        </p>
+
+        <h3>Prepend (Add at Start)</h3>
+        <p>
+          Like inserting a new first chapter in a book.
+          The new node points to the old head.
+        </p>
+
+        <h3>Remove Head</h3>
+        <p>
+          We simply move the head pointer forward.
+          No shifting required.
+        </p>
+
+        <h3>Remove Tail</h3>
+        <p>
+          We walk the list to find the second-last node,
+          then update its <code>next</code> to <code>null</code>.
+        </p>
+
+        <h3>Insert at Index</h3>
+        <p>
+          We stop just before the index and
+          rewire the pointers — like reconnecting wires.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- CODE -->
+      <div class="blog-section walkthrough-section">
+        <h2>📦 Full Implementation</h2>
+
+        <pre><code class="language-js">
+class LinkedList {
+  constructor(value) {
+    this.head = value !== undefined ? { value, next: null } : null;
+    this.tail = this.head;
+    this.length = this.head ? 1 : 0;
+  }
+
+  append(value) {
+    const node = { value, next: null };
+    if (!this.head) {
+      this.head = this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+    this.length++;
+  }
+
+  prepend(value) {
+    this.head = { value, next: this.head };
+    if (!this.tail) this.tail = this.head;
+    this.length++;
+  }
+
+  removeHead() {
+    if (!this.head) return;
+    this.head = this.head.next;
+    this.length--;
+    if (!this.head) this.tail = null;
+  }
+
+  removeTail() {
+    if (!this.head) return;
+    if (this.head === this.tail) {
+      this.head = this.tail = null;
+      this.length = 0;
+      return;
+    }
+    let curr = this.head;
+    while (curr.next !== this.tail) {
+      curr = curr.next;
+    }
+    curr.next = null;
+    this.tail = curr;
+    this.length--;
+  }
+}
+        </code></pre>
+      </div>
+
+      <hr />
+
+      <!-- PROS CONS -->
+      <div class="blog-section output-section">
+        <h2>⚖️ Linked List vs Array vs Heap</h2>
+
+        <ul>
+          <li><strong>Linked List</strong> → fast insert/delete, slow access</li>
+          <li><strong>Array</strong> → fast access, expensive shifts</li>
+          <li><strong>Heap</strong> → optimized for priority operations</li>
+        </ul>
+
+        <p>
+          Choosing the right structure is what interviewers care about.
+        </p>
+      </div>
+
+      <hr />
+
+      <!-- BONUS -->
+      <div class="blog-section bonus-section">
+        <h2>🎯 Bonus Interview Questions</h2>
+
+        <ul>
+          <li>Reverse a linked list (iterative & recursive)</li>
+          <li>Detect cycle (Floyd’s algorithm)</li>
+          <li>Find middle of linked list</li>
+          <li>Convert linked list to array</li>
+        </ul>
+      </div>
+
+      <nav class="blog-series">
+        <a class="prev" href="../first-recurring-character/index.html">
+          ← Previous: First Recurring Character
+        </a>
+        <a href="../../index.html">Home</a>
+        <a class="next" href="../../coming-soon.html">
+          Next: Coming Soon →
+        </a>
+      </nav>
+    </article>
+
+    <script src="../theme.js"></script>
+  </body>
+</html>
